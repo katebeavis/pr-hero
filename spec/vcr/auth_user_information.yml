@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token b169ed958216cef15ab54543f762c20a58813a1a
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 20 Oct 2016 14:35:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4968'
+      X-Ratelimit-Reset:
+      - '1476975772'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"095c99ee71dabed6327f4475d3711731"
+      Last-Modified:
+      - Wed, 19 Oct 2016 12:58:13 GMT
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Served-By:
+      - 8166eb1845e56d99ba68a6b1065016c1
+      X-Github-Request-Id:
+      - A5E15064:3E51:107B177F:5808D63A
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"katebeavis","id":10133018,"avatar_url":"https://avatars.githubusercontent.com/u/10133018?v=3","gravatar_id":"","url":"https://api.github.com/users/katebeavis","html_url":"https://github.com/katebeavis","followers_url":"https://api.github.com/users/katebeavis/followers","following_url":"https://api.github.com/users/katebeavis/following{/other_user}","gists_url":"https://api.github.com/users/katebeavis/gists{/gist_id}","starred_url":"https://api.github.com/users/katebeavis/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/katebeavis/subscriptions","organizations_url":"https://api.github.com/users/katebeavis/orgs","repos_url":"https://api.github.com/users/katebeavis/repos","events_url":"https://api.github.com/users/katebeavis/events{/privacy}","received_events_url":"https://api.github.com/users/katebeavis/received_events","type":"User","site_admin":false,"name":"Kate
+        Beavis","company":"Zopa","blog":null,"location":"London","email":null,"hireable":null,"bio":null,"public_repos":69,"public_gists":0,"followers":35,"following":44,"created_at":"2014-12-09T18:07:50Z","updated_at":"2016-10-19T12:58:13Z","private_gists":0,"total_private_repos":4,"owned_private_repos":0,"disk_usage":38163,"collaborators":0,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":0}}'
+    http_version: 
+  recorded_at: Thu, 20 Oct 2016 14:35:38 GMT
+recorded_with: VCR 3.0.3
