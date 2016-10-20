@@ -8,12 +8,33 @@ describe 'octokit api' do
     expect(octokit).to be_a(OctokitApi)
   end
 
+  it 'returns the authenticated user' do
+    expect(octokit.user.name).to eq("Kate Beavis")
+  end
+
   describe '#user' do
     it 'returns the authenticated user' do
       VCR.use_cassette('auth_user_information') do
         response = octokit
         expect(response.user.name).to eq("Kate Beavis")
       end
+    end
+  end
+
+  describe '#pull_requests' do
+    before do
+      VCR.insert_cassette('open_pull_requests')
+    end
+    after do
+      VCR.eject_cassette
+    end
+
+    it 'returns an array object' do
+      expect(octokit.pull_requests).to be_a(Array)
+    end
+
+    it 'returns the amount of open pull requests' do
+      expect(octokit.pull_requests.count).to eq(5)
     end
   end
 end

@@ -1,0 +1,13 @@
+section
+  h1 PR Hero
+
+  table.table
+    thead.thead-inverse
+      tr
+        th
+        th
+    tbody
+      - @client.pull_requests.each do |p|
+        tr
+          td = p.title
+          td = p.user.login

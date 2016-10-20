@@ -1,0 +1,253 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/zopaUK/Helium/issues
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token b169ed958216cef15ab54543f762c20a58813a1a
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 20 Oct 2016 14:54:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4953'
+      X-Ratelimit-Reset:
+      - '1476975772'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"3e75e9b7c69c84b737eebbbd9ebb33d6"
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Served-By:
+      - 075bb2f6b7031ca3c0e69edb17939fae
+      X-Github-Request-Id:
+      - A5E15064:3E4C:92A2A48:5808DAC3
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"url":"https://api.github.com/repos/zopaUK/Helium/issues/59","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/59/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/59/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/59/events","html_url":"https://github.com/zopaUK/Helium/pull/59","id":184243942,"number":59,"title":"Updated
+        the page sections with headers, and breakpoint font styling.","user":{"login":"orrinward","id":1876245,"avatar_url":"https://avatars.githubusercontent.com/u/1876245?v=3","gravatar_id":"","url":"https://api.github.com/users/orrinward","html_url":"https://github.com/orrinward","followers_url":"https://api.github.com/users/orrinward/followers","following_url":"https://api.github.com/users/orrinward/following{/other_user}","gists_url":"https://api.github.com/users/orrinward/gists{/gist_id}","starred_url":"https://api.github.com/users/orrinward/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/orrinward/subscriptions","organizations_url":"https://api.github.com/users/orrinward/orgs","repos_url":"https://api.github.com/users/orrinward/repos","events_url":"https://api.github.com/users/orrinward/events{/privacy}","received_events_url":"https://api.github.com/users/orrinward/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2016-10-20T14:23:16Z","updated_at":"2016-10-20T14:23:16Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/59","html_url":"https://github.com/zopaUK/Helium/pull/59","diff_url":"https://github.com/zopaUK/Helium/pull/59.diff","patch_url":"https://github.com/zopaUK/Helium/pull/59.patch"},"body":"https://youtrack.zopian.ad.zopa.com/issue/PBF-135\r\n\r\nFont
+        sizing generally, and specifically font-spacing for page headers."},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/58","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/58/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/58/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/58/events","html_url":"https://github.com/zopaUK/Helium/pull/58","id":184242923,"number":58,"title":"PBF-132
+        Submitting home page form at the bottom does not work","user":{"login":"mottalrd","id":1802500,"avatar_url":"https://avatars.githubusercontent.com/u/1802500?v=3","gravatar_id":"","url":"https://api.github.com/users/mottalrd","html_url":"https://github.com/mottalrd","followers_url":"https://api.github.com/users/mottalrd/followers","following_url":"https://api.github.com/users/mottalrd/following{/other_user}","gists_url":"https://api.github.com/users/mottalrd/gists{/gist_id}","starred_url":"https://api.github.com/users/mottalrd/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mottalrd/subscriptions","organizations_url":"https://api.github.com/users/mottalrd/orgs","repos_url":"https://api.github.com/users/mottalrd/repos","events_url":"https://api.github.com/users/mottalrd/events{/privacy}","received_events_url":"https://api.github.com/users/mottalrd/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":1,"created_at":"2016-10-20T14:19:21Z","updated_at":"2016-10-20T14:54:21Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/58","html_url":"https://github.com/zopaUK/Helium/pull/58","diff_url":"https://github.com/zopaUK/Helium/pull/58.diff","patch_url":"https://github.com/zopaUK/Helium/pull/58.patch"},"body":"https://youtrack.zopian.ad.zopa.com/issue/PBF-132\r\n\r\nWhyCurrently
+        if you hit the form at the end of the page it does send you to the next page\r\n\r\nWhatFix
+        it. Filling the form at the end of the page should send you to the representative
+        example page.\r\n\r\nHow\r\nAcceptanceAs a zopa balloon user,\r\nI go to the
+        home page,\r\nI enter balloon and mileage in the form at the bottom of the
+        page\r\nI hit enter\r\n=> I expect to see the representative example page\r\n"},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/57","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/57/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/57/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/57/events","html_url":"https://github.com/zopaUK/Helium/pull/57","id":184235579,"number":57,"title":"Updated
+        signin page","user":{"login":"orrinward","id":1876245,"avatar_url":"https://avatars.githubusercontent.com/u/1876245?v=3","gravatar_id":"","url":"https://api.github.com/users/orrinward","html_url":"https://github.com/orrinward","followers_url":"https://api.github.com/users/orrinward/followers","following_url":"https://api.github.com/users/orrinward/following{/other_user}","gists_url":"https://api.github.com/users/orrinward/gists{/gist_id}","starred_url":"https://api.github.com/users/orrinward/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/orrinward/subscriptions","organizations_url":"https://api.github.com/users/orrinward/orgs","repos_url":"https://api.github.com/users/orrinward/repos","events_url":"https://api.github.com/users/orrinward/events{/privacy}","received_events_url":"https://api.github.com/users/orrinward/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2016-10-20T13:51:36Z","updated_at":"2016-10-20T13:51:36Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/57","html_url":"https://github.com/zopaUK/Helium/pull/57","diff_url":"https://github.com/zopaUK/Helium/pull/57.diff","patch_url":"https://github.com/zopaUK/Helium/pull/57.patch"},"body":"https://youtrack.zopian.ad.zopa.com/issue/PBF-129\r\n\r\nUpdated
+        the signin page with new markup and content"},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/46","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/46/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/46/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/46/events","html_url":"https://github.com/zopaUK/Helium/pull/46","id":183572340,"number":46,"title":"Pbf
+        70 user is able to go to next and previous step on each page of the application
+        form","user":{"login":"TomGroombridge","id":5918265,"avatar_url":"https://avatars.githubusercontent.com/u/5918265?v=3","gravatar_id":"","url":"https://api.github.com/users/TomGroombridge","html_url":"https://github.com/TomGroombridge","followers_url":"https://api.github.com/users/TomGroombridge/followers","following_url":"https://api.github.com/users/TomGroombridge/following{/other_user}","gists_url":"https://api.github.com/users/TomGroombridge/gists{/gist_id}","starred_url":"https://api.github.com/users/TomGroombridge/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/TomGroombridge/subscriptions","organizations_url":"https://api.github.com/users/TomGroombridge/orgs","repos_url":"https://api.github.com/users/TomGroombridge/repos","events_url":"https://api.github.com/users/TomGroombridge/events{/privacy}","received_events_url":"https://api.github.com/users/TomGroombridge/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":3,"created_at":"2016-10-18T02:04:25Z","updated_at":"2016-10-19T12:02:59Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/46","html_url":"https://github.com/zopaUK/Helium/pull/46","diff_url":"https://github.com/zopaUK/Helium/pull/46.diff","patch_url":"https://github.com/zopaUK/Helium/pull/46.patch"},"body":"##
+        Why\r\n\r\nAs we previously had on car refi user should be able to go back
+        and forth on the application steps to amend/revise... the information.\r\n\r\n##
+        How\r\n\r\nThere should be a button on each page of the form to tell you to
+        go back to the previous page\r\n\r\n## Acceptance\r\n\r\nas user can always
+        go back to a previous page in the form as that page will have already been
+        completed, however if the user has not yet completed the current form page
+        then they should not be able to see a button for the next page, only the previous
+        one.\r\n\r\n\r\nhttp://youtrack.zopian.ad.zopa.com/issue/PBF-70"},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/43","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/43/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/43/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/43/events","html_url":"https://github.com/zopaUK/Helium/pull/43","id":183338100,"number":43,"title":"Pbf
+        99 work out the loan term needed for the personalised rate using the rate
+        card","user":{"login":"TomGroombridge","id":5918265,"avatar_url":"https://avatars.githubusercontent.com/u/5918265?v=3","gravatar_id":"","url":"https://api.github.com/users/TomGroombridge","html_url":"https://github.com/TomGroombridge","followers_url":"https://api.github.com/users/TomGroombridge/followers","following_url":"https://api.github.com/users/TomGroombridge/following{/other_user}","gists_url":"https://api.github.com/users/TomGroombridge/gists{/gist_id}","starred_url":"https://api.github.com/users/TomGroombridge/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/TomGroombridge/subscriptions","organizations_url":"https://api.github.com/users/TomGroombridge/orgs","repos_url":"https://api.github.com/users/TomGroombridge/repos","events_url":"https://api.github.com/users/TomGroombridge/events{/privacy}","received_events_url":"https://api.github.com/users/TomGroombridge/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":1,"created_at":"2016-10-17T06:49:55Z","updated_at":"2016-10-19T05:57:47Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/43","html_url":"https://github.com/zopaUK/Helium/pull/43","diff_url":"https://github.com/zopaUK/Helium/pull/43.diff","patch_url":"https://github.com/zopaUK/Helium/pull/43.patch"},"body":"##
+        Why\r\nThe customer promise with the balloon payment loans product is that
+        we will get as close as possible to the monthly payment the customer would
+        like with the offer we give them. \r\n\r\nOnce a customer gets a personalised
+        rate, their rate may have changed so significantly from the representative
+        APR that a different term is more appropriate to give them a monthly payment
+        closest to their desired amount. \r\n\r\nThis can happen in both directions
+        - someone might be an A*, and have a much lower APR (e.g. 3.5% vs 7.9% Rep
+        APR), meaning they might be able to have a shorter loan term to hit their
+        monthly; or they might be an E, and have a much higher APR (e.g. 25% vs 7.9%
+        Rep APR), meaning they might have to have a longer loan to hit their monthly
+        payment.\r\n\r\nIn the absence of monthly loan terms, and with different APRs
+        for different people, we have to infer the best loan term to get as close
+        as possible.\r\n\r\n## What\r\nImplement logic to identify the appropriate
+        loan term to get as close as possible to the user''s desired monthly payment,
+        taking into account personalised pricing.\r\n\r\n## How\r\n\r\n1) Send a quote
+        request to Broker API for balloon amount over fixed term as per rep example
+        (and fake-decline it to enable request of second quote)\r\n\r\n2) Compare
+        APR from the quote to full ratecard for corresponding LTV from the [http://swagger-ui.zopian.ad.zopa.com/?url=http://pricing.uat.ldn.zopa.com/swagger.json#!/default/get_feed,
+        Pricing Service] to identify market of the user (example http://pricing.uat.ldn.zopa.com/feed?channel_type=broker&channel_code=RPCarRefiMedium&is_safeguarded=false)\r\n\r\n3)
+        Find APRs for this market and the balloon amount across all terms \r\n\r\n4)
+        Calculate the monthly repayments for each term for this balloon payment and
+        market\r\n\r\n5) Compare these 5 monthly repayments to the desired monthly
+        payment\r\n\r\n6) Pick the term with the lowest absolute discrepancy to the
+        desired monthly payment\r\n\r\n7) Request another quote on Broker API with
+        this term and balloon amount, using the corresponding LTV ratecard, and present
+        this to the user accordingly\r\n\r\n## Acceptance\r\n\r\nScenario 1: Happy
+        Path\r\n\r\nScenario 2: Identified loan term leads to a decline\r\n\r\nScenario
+        3: Broker API times out\r\n\r\nhttp://youtrack.zopian.ad.zopa.com/issue/PBF-99"}]'
+    http_version: 
+  recorded_at: Thu, 20 Oct 2016 14:54:58 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/zopaUK/Helium/issues
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token b169ed958216cef15ab54543f762c20a58813a1a
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 20 Oct 2016 14:54:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4952'
+      X-Ratelimit-Reset:
+      - '1476975772'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"3e75e9b7c69c84b737eebbbd9ebb33d6"
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Served-By:
+      - 075bb2f6b7031ca3c0e69edb17939fae
+      X-Github-Request-Id:
+      - A5E15064:3E51:107EAEC0:5808DAC3
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"url":"https://api.github.com/repos/zopaUK/Helium/issues/59","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/59/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/59/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/59/events","html_url":"https://github.com/zopaUK/Helium/pull/59","id":184243942,"number":59,"title":"Updated
+        the page sections with headers, and breakpoint font styling.","user":{"login":"orrinward","id":1876245,"avatar_url":"https://avatars.githubusercontent.com/u/1876245?v=3","gravatar_id":"","url":"https://api.github.com/users/orrinward","html_url":"https://github.com/orrinward","followers_url":"https://api.github.com/users/orrinward/followers","following_url":"https://api.github.com/users/orrinward/following{/other_user}","gists_url":"https://api.github.com/users/orrinward/gists{/gist_id}","starred_url":"https://api.github.com/users/orrinward/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/orrinward/subscriptions","organizations_url":"https://api.github.com/users/orrinward/orgs","repos_url":"https://api.github.com/users/orrinward/repos","events_url":"https://api.github.com/users/orrinward/events{/privacy}","received_events_url":"https://api.github.com/users/orrinward/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2016-10-20T14:23:16Z","updated_at":"2016-10-20T14:23:16Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/59","html_url":"https://github.com/zopaUK/Helium/pull/59","diff_url":"https://github.com/zopaUK/Helium/pull/59.diff","patch_url":"https://github.com/zopaUK/Helium/pull/59.patch"},"body":"https://youtrack.zopian.ad.zopa.com/issue/PBF-135\r\n\r\nFont
+        sizing generally, and specifically font-spacing for page headers."},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/58","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/58/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/58/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/58/events","html_url":"https://github.com/zopaUK/Helium/pull/58","id":184242923,"number":58,"title":"PBF-132
+        Submitting home page form at the bottom does not work","user":{"login":"mottalrd","id":1802500,"avatar_url":"https://avatars.githubusercontent.com/u/1802500?v=3","gravatar_id":"","url":"https://api.github.com/users/mottalrd","html_url":"https://github.com/mottalrd","followers_url":"https://api.github.com/users/mottalrd/followers","following_url":"https://api.github.com/users/mottalrd/following{/other_user}","gists_url":"https://api.github.com/users/mottalrd/gists{/gist_id}","starred_url":"https://api.github.com/users/mottalrd/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mottalrd/subscriptions","organizations_url":"https://api.github.com/users/mottalrd/orgs","repos_url":"https://api.github.com/users/mottalrd/repos","events_url":"https://api.github.com/users/mottalrd/events{/privacy}","received_events_url":"https://api.github.com/users/mottalrd/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":1,"created_at":"2016-10-20T14:19:21Z","updated_at":"2016-10-20T14:54:21Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/58","html_url":"https://github.com/zopaUK/Helium/pull/58","diff_url":"https://github.com/zopaUK/Helium/pull/58.diff","patch_url":"https://github.com/zopaUK/Helium/pull/58.patch"},"body":"https://youtrack.zopian.ad.zopa.com/issue/PBF-132\r\n\r\nWhyCurrently
+        if you hit the form at the end of the page it does send you to the next page\r\n\r\nWhatFix
+        it. Filling the form at the end of the page should send you to the representative
+        example page.\r\n\r\nHow\r\nAcceptanceAs a zopa balloon user,\r\nI go to the
+        home page,\r\nI enter balloon and mileage in the form at the bottom of the
+        page\r\nI hit enter\r\n=> I expect to see the representative example page\r\n"},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/57","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/57/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/57/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/57/events","html_url":"https://github.com/zopaUK/Helium/pull/57","id":184235579,"number":57,"title":"Updated
+        signin page","user":{"login":"orrinward","id":1876245,"avatar_url":"https://avatars.githubusercontent.com/u/1876245?v=3","gravatar_id":"","url":"https://api.github.com/users/orrinward","html_url":"https://github.com/orrinward","followers_url":"https://api.github.com/users/orrinward/followers","following_url":"https://api.github.com/users/orrinward/following{/other_user}","gists_url":"https://api.github.com/users/orrinward/gists{/gist_id}","starred_url":"https://api.github.com/users/orrinward/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/orrinward/subscriptions","organizations_url":"https://api.github.com/users/orrinward/orgs","repos_url":"https://api.github.com/users/orrinward/repos","events_url":"https://api.github.com/users/orrinward/events{/privacy}","received_events_url":"https://api.github.com/users/orrinward/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2016-10-20T13:51:36Z","updated_at":"2016-10-20T13:51:36Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/57","html_url":"https://github.com/zopaUK/Helium/pull/57","diff_url":"https://github.com/zopaUK/Helium/pull/57.diff","patch_url":"https://github.com/zopaUK/Helium/pull/57.patch"},"body":"https://youtrack.zopian.ad.zopa.com/issue/PBF-129\r\n\r\nUpdated
+        the signin page with new markup and content"},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/46","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/46/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/46/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/46/events","html_url":"https://github.com/zopaUK/Helium/pull/46","id":183572340,"number":46,"title":"Pbf
+        70 user is able to go to next and previous step on each page of the application
+        form","user":{"login":"TomGroombridge","id":5918265,"avatar_url":"https://avatars.githubusercontent.com/u/5918265?v=3","gravatar_id":"","url":"https://api.github.com/users/TomGroombridge","html_url":"https://github.com/TomGroombridge","followers_url":"https://api.github.com/users/TomGroombridge/followers","following_url":"https://api.github.com/users/TomGroombridge/following{/other_user}","gists_url":"https://api.github.com/users/TomGroombridge/gists{/gist_id}","starred_url":"https://api.github.com/users/TomGroombridge/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/TomGroombridge/subscriptions","organizations_url":"https://api.github.com/users/TomGroombridge/orgs","repos_url":"https://api.github.com/users/TomGroombridge/repos","events_url":"https://api.github.com/users/TomGroombridge/events{/privacy}","received_events_url":"https://api.github.com/users/TomGroombridge/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":3,"created_at":"2016-10-18T02:04:25Z","updated_at":"2016-10-19T12:02:59Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/46","html_url":"https://github.com/zopaUK/Helium/pull/46","diff_url":"https://github.com/zopaUK/Helium/pull/46.diff","patch_url":"https://github.com/zopaUK/Helium/pull/46.patch"},"body":"##
+        Why\r\n\r\nAs we previously had on car refi user should be able to go back
+        and forth on the application steps to amend/revise... the information.\r\n\r\n##
+        How\r\n\r\nThere should be a button on each page of the form to tell you to
+        go back to the previous page\r\n\r\n## Acceptance\r\n\r\nas user can always
+        go back to a previous page in the form as that page will have already been
+        completed, however if the user has not yet completed the current form page
+        then they should not be able to see a button for the next page, only the previous
+        one.\r\n\r\n\r\nhttp://youtrack.zopian.ad.zopa.com/issue/PBF-70"},{"url":"https://api.github.com/repos/zopaUK/Helium/issues/43","repository_url":"https://api.github.com/repos/zopaUK/Helium","labels_url":"https://api.github.com/repos/zopaUK/Helium/issues/43/labels{/name}","comments_url":"https://api.github.com/repos/zopaUK/Helium/issues/43/comments","events_url":"https://api.github.com/repos/zopaUK/Helium/issues/43/events","html_url":"https://github.com/zopaUK/Helium/pull/43","id":183338100,"number":43,"title":"Pbf
+        99 work out the loan term needed for the personalised rate using the rate
+        card","user":{"login":"TomGroombridge","id":5918265,"avatar_url":"https://avatars.githubusercontent.com/u/5918265?v=3","gravatar_id":"","url":"https://api.github.com/users/TomGroombridge","html_url":"https://github.com/TomGroombridge","followers_url":"https://api.github.com/users/TomGroombridge/followers","following_url":"https://api.github.com/users/TomGroombridge/following{/other_user}","gists_url":"https://api.github.com/users/TomGroombridge/gists{/gist_id}","starred_url":"https://api.github.com/users/TomGroombridge/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/TomGroombridge/subscriptions","organizations_url":"https://api.github.com/users/TomGroombridge/orgs","repos_url":"https://api.github.com/users/TomGroombridge/repos","events_url":"https://api.github.com/users/TomGroombridge/events{/privacy}","received_events_url":"https://api.github.com/users/TomGroombridge/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":1,"created_at":"2016-10-17T06:49:55Z","updated_at":"2016-10-19T05:57:47Z","closed_at":null,"pull_request":{"url":"https://api.github.com/repos/zopaUK/Helium/pulls/43","html_url":"https://github.com/zopaUK/Helium/pull/43","diff_url":"https://github.com/zopaUK/Helium/pull/43.diff","patch_url":"https://github.com/zopaUK/Helium/pull/43.patch"},"body":"##
+        Why\r\nThe customer promise with the balloon payment loans product is that
+        we will get as close as possible to the monthly payment the customer would
+        like with the offer we give them. \r\n\r\nOnce a customer gets a personalised
+        rate, their rate may have changed so significantly from the representative
+        APR that a different term is more appropriate to give them a monthly payment
+        closest to their desired amount. \r\n\r\nThis can happen in both directions
+        - someone might be an A*, and have a much lower APR (e.g. 3.5% vs 7.9% Rep
+        APR), meaning they might be able to have a shorter loan term to hit their
+        monthly; or they might be an E, and have a much higher APR (e.g. 25% vs 7.9%
+        Rep APR), meaning they might have to have a longer loan to hit their monthly
+        payment.\r\n\r\nIn the absence of monthly loan terms, and with different APRs
+        for different people, we have to infer the best loan term to get as close
+        as possible.\r\n\r\n## What\r\nImplement logic to identify the appropriate
+        loan term to get as close as possible to the user''s desired monthly payment,
+        taking into account personalised pricing.\r\n\r\n## How\r\n\r\n1) Send a quote
+        request to Broker API for balloon amount over fixed term as per rep example
+        (and fake-decline it to enable request of second quote)\r\n\r\n2) Compare
+        APR from the quote to full ratecard for corresponding LTV from the [http://swagger-ui.zopian.ad.zopa.com/?url=http://pricing.uat.ldn.zopa.com/swagger.json#!/default/get_feed,
+        Pricing Service] to identify market of the user (example http://pricing.uat.ldn.zopa.com/feed?channel_type=broker&channel_code=RPCarRefiMedium&is_safeguarded=false)\r\n\r\n3)
+        Find APRs for this market and the balloon amount across all terms \r\n\r\n4)
+        Calculate the monthly repayments for each term for this balloon payment and
+        market\r\n\r\n5) Compare these 5 monthly repayments to the desired monthly
+        payment\r\n\r\n6) Pick the term with the lowest absolute discrepancy to the
+        desired monthly payment\r\n\r\n7) Request another quote on Broker API with
+        this term and balloon amount, using the corresponding LTV ratecard, and present
+        this to the user accordingly\r\n\r\n## Acceptance\r\n\r\nScenario 1: Happy
+        Path\r\n\r\nScenario 2: Identified loan term leads to a decline\r\n\r\nScenario
+        3: Broker API times out\r\n\r\nhttp://youtrack.zopian.ad.zopa.com/issue/PBF-99"}]'
+    http_version: 
+  recorded_at: Thu, 20 Oct 2016 14:54:58 GMT
+recorded_with: VCR 3.0.3

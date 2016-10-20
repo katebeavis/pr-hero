@@ -2,13 +2,29 @@ require 'rails_helper'
 
 RSpec.describe PullRequestsController, type: :controller do
 
-  describe '#show' do
+  describe '#index' do
     render_views
 
-    it 'shows the page\'s title' do
-      get :show
+    before do
+      VCR.insert_cassette('open_pull_requests')
+    end
+    after do
+      VCR.eject_cassette
+    end
 
-      expect(response.body).to have_text('Dinnr')
+    it 'display\'s the page\'s title' do
+      get :index
+
+      expect(response.body).to have_text('PR Hero')
+    end
+
+    it 'display\'s the a list of pull requests' do
+      get :index
+
+      expect(response.body).to have_text('Updated the page sections with headers, and breakpoint font styling.')
+    end
+
+    it 'display\'s the lead time of the pull requests' do
     end
   end
 
