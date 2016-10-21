@@ -1,15 +1,17 @@
 section
   h1 PR Hero
 
-  table.table
-    thead.thead-inverse
-      tr
-        th Name
-        th Author
-    tbody
-      - @pull_requests.each do |p|
-        tr
-          td = p.title
-          td = p.user.login
+  = high_chart("pr", @h)
 
-  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  / table.table
+  /   thead.thead-inverse
+  /     tr
+  /       th Name
+  /       th Author
+  /       th State
+  /   tbody
+  /     - @pull_requests.each do |p|
+  /       tr
+  /         td = p.title
+  /         td = p.user.login
+  /         td = p.state

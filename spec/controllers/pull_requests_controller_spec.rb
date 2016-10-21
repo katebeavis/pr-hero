@@ -17,12 +17,6 @@ RSpec.describe PullRequestsController, type: :controller do
 
       expect(response.body).to have_text('PR Hero')
     end
-
-    it 'display\'s the a list of pull requests' do
-      get :index
-
-      expect(response.body).to have_text('Updated the page sections with headers, and breakpoint font styling.')
-    end
   end
 
   describe 'high chart' do
@@ -31,7 +25,7 @@ RSpec.describe PullRequestsController, type: :controller do
     it 'displays the basic line chart' do
       get :index
 
-      expect(response.body).to have_css('div#container')
+      expect(response.body).to have_css('div#pr')
     end
   end
 
