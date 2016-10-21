@@ -1,14 +1,16 @@
 class OctokitApi
 
   def initialize
-    @client = Octokit::Client.new(access_token: 'b169ed958216cef15ab54543f762c20a58813a1a')
+    @client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
   end
 
   def user
     @client.user
   end
 
-  def pull_requests
-    @client.issues 'zopaUK/Helium'
+  def pull_requests(state='all')
+    @client.auto_paginate = true
+    @client.issues 'zopaUK/Helium', state: state
   end
+
 end

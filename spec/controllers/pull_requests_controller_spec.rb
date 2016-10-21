@@ -6,7 +6,7 @@ RSpec.describe PullRequestsController, type: :controller do
     render_views
 
     before do
-      VCR.insert_cassette('open_pull_requests')
+      VCR.insert_cassette('pull_requests')
     end
     after do
       VCR.eject_cassette
@@ -22,9 +22,6 @@ RSpec.describe PullRequestsController, type: :controller do
       get :index
 
       expect(response.body).to have_text('Updated the page sections with headers, and breakpoint font styling.')
-    end
-
-    it 'display\'s the lead time of the pull requests' do
     end
   end
 

@@ -4,10 +4,10 @@ section
   table.table
     thead.thead-inverse
       tr
-        th
-        th
+        th Name
+        th Author
     tbody
-      - @client.pull_requests.each do |p|
+      - @pull_requests.each do |p|
         tr
           td = p.title
           td = p.user.login
