@@ -25,4 +25,14 @@ RSpec.describe PullRequestsController, type: :controller do
     end
   end
 
+  describe 'high chart' do
+    render_views
+
+    it 'displays the basic line chart' do
+      get :index
+
+      expect(response.body).to have_css('div#container')
+    end
+  end
+
 end
