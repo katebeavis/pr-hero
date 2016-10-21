@@ -23,7 +23,7 @@ describe 'octokit api' do
 
   describe '#pull_requests' do
     before do
-      VCR.insert_cassette('pull_requests')
+      VCR.insert_cassette('closed_pull_requests')
     end
     after do
       VCR.eject_cassette
@@ -33,8 +33,8 @@ describe 'octokit api' do
       expect(octokit.pull_requests).to be_a(Array)
     end
 
-    it 'returns the amount of open pull requests' do
-      expect(octokit.pull_requests.count).to eq(60)
+    it 'returns the amount of closed pull requests' do
+      expect(octokit.pull_requests.count).to eq(57)
     end
   end
 

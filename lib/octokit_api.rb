@@ -8,7 +8,7 @@ class OctokitApi
     @client.user
   end
 
-  def pull_requests(state='all')
+  def pull_requests(state='closed')
     @client.auto_paginate = true
     @client.issues 'zopaUK/Helium', state: state
   end

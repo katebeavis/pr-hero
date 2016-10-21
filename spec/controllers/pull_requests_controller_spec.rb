@@ -6,7 +6,7 @@ RSpec.describe PullRequestsController, type: :controller do
     render_views
 
     before do
-      VCR.insert_cassette('pull_requests')
+      VCR.insert_cassette('closed_pull_requests')
     end
     after do
       VCR.eject_cassette

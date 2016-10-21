@@ -7,7 +7,7 @@ class PullRequestsController < ApplicationController
     client = OctokitApi.new
     @pull_requests = client.pull_requests
     @pr_stats = ComputePRStats.new(@pull_requests)
-    @h = LazyHighCharts::HighChart.new('graph') do |f|
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: "PR Lead Time")
         f.xAxis(categories: ['1', '2' , '3','4'])
         f.series(name: "Average", yAxis: 0, data: [1, 2])
@@ -23,6 +23,14 @@ class PullRequestsController < ApplicationController
         f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
         f.chart({defaultSeriesType: "line"})
     end
+    # @pr_stats.lead_time
+    # {
+    #    '2016-10-01': 3.5,
+    #    '2016-10-02': 2.0,
+    #    ...
+    # }
+
+    # plot.lines()
   end
 
   def lead_time
