@@ -14,6 +14,13 @@ class ComputePRStats
                   '2016-10-03': 4.5,
                   '2016-10-04': 1.0,
                   '2016-10-05': 3.5
+                  },
+        week3: {
+                  '2016-10-01': 3.5,
+                  '2016-10-02': 2.0,
+                  '2016-10-03': 1.0,
+                  '2016-10-04': 5.0,
+                  '2016-10-05': 4.5
                   }
       }
 
@@ -47,8 +54,8 @@ class ComputePRStats
   def avg
     data = DUMMY_DATA
     avg_lead_time = []
-    lead_time = []
     data.map do |key, value|
+      lead_time = []
       value.map do |key2, value2|
         lead_time << value2
       end
@@ -56,11 +63,19 @@ class ComputePRStats
       sum = lead_time.inject(:+)
       avg = sum / days
       avg_lead_time << avg
-    end.flatten.uniq
+    end.uniq.flatten
   end
 
-  def max(data)
-    data.max_by(&:last).last
+  def max
+    data = DUMMY_DATA
+    max_lead_time =[]
+    data.map do |key, value|
+      lead_time = []
+      value.map do |key2, value2|
+        lead_time << value2
+      end
+      max_lead_time << lead_time.max
+    end.uniq.flatten
   end
 
   def min(data)

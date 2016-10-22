@@ -30,13 +30,13 @@ describe 'compute pr stats' do
 
   describe '#avg' do
     it 'returns the average pr lead time for every week that has data' do
-      expect(compute.avg).to eq([3.2, 3.1])
+      expect(compute.avg).to eq([3.2, 3.0, 3.2])
     end
   end
 
   describe '#max' do
     it 'returns the max pr lead time for a week' do
-      expect(compute.max(dummy_data[:week1])).to eq(5.0)
+      expect(compute.max).to eq([5.0, 4.5, 5.0])
     end
   end
 
