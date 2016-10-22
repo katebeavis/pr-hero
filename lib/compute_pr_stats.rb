@@ -1,5 +1,22 @@
 class ComputePRStats
 
+  DUMMY_DATA =      {
+        week1: {
+                  '2016-10-01': 3.5,
+                  '2016-10-02': 2.0,
+                  '2016-10-03': 1.0,
+                  '2016-10-04': 5.0,
+                  '2016-10-05': 4.5
+                  },
+        week2: {
+                  '2016-10-01': 2.0,
+                  '2016-10-02': 4.0,
+                  '2016-10-03': 4.5,
+                  '2016-10-04': 1.0,
+                  '2016-10-05': 3.5
+                  }
+      }
+
   attr_accessor :pull_requests
 
   def initialize(pull_requests)
@@ -21,44 +38,32 @@ class ComputePRStats
     end
   end
 
-  # def create_data_structure
-  #   pull_requests.map{|p| {"title"=>p.title { "closed_at"=>p.closed_at } } }
-  # end
-
   def data_structure
     pull_requests.each_with_object({}) do |pull_request, h|
       h[pull_request.closed_at.strftime("%Y/%m/%d")] = { "title" => pull_request.title}
     end
   end
 
-  def data
-    {
-      week1: {
-                '2016-10-01': 3.5,
-                '2016-10-02': 2.0,
-                '2016-10-03': 1.0,
-                '2016-10-04': 5.0,
-                '2016-10-05': 4.5,
-                '2016-10-06': 0.0,
-                '2016-10-07': 0.0
-                },
-      week2: {
-                '2016-10-08': 3.5,
-                '2016-10-09': 2.0,
-                '2016-10-10': 1.0,
-                '2016-10-11': 5.0,
-                '2016-10-12': 4.5,
-                '2016-10-13': 0.0,
-                '2016-10-14': 0.0
-                }
-    }
+  def avg
+    data = DUMMY_DATA
+    avg_lead_time = []
+    lead_time = []
+    data.map do |key, value|
+      value.map do |key2, value2|
+        lead_time << value2
+      end
+      days = lead_time.length
+      sum = lead_time.inject(:+)
+      avg = sum / days
+      avg_lead_time << avg
+    end.flatten.uniq
   end
 
-  def max(hash)
-    hash.max_by(&:last)
+  def max(data)
+    data.max_by(&:last).last
   end
 
-  def days
-    @days = ['yo','you',3,4,5,6,7,8]
+  def min(data)
+    data.min_by(&:last).last
   end
 end
