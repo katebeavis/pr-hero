@@ -9,26 +9,49 @@ class PullRequestsController < ApplicationController
     @pr_stats = ComputePRStats.new(@pull_requests)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: "PR Lead Time")
-        f.xAxis(categories: ['1', '2' , '3','4'])
-        f.series(name: "Average", yAxis: 0, data: [1, 2])
-        f.series(name: "Median", yAxis: 0, data: [1, 4])
+        f.series(name: "Average", data: [1, 2, 5, 4.5, 1], pointStart: Time.parse("2016-09-20").getutc,
+          pointInterval: 1.week)
 
         f.yAxis [
-          {title: {text: "Time", margin: 10} },
+          {title: {text: "Lead Time", margin: 10} },
         ]
         f.xAxis [
-          {title: {text: "Days", margin: 10} },
+          { type: 'datetime',
+            title: {text: "Date", margin: 10},
+            dateTimeLabelFormats: {week: 'wb %e/%m'},
+          },
         ]
 
         f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
         f.chart({defaultSeriesType: "line"})
     end
     # @pr_stats.lead_time
-    # {
-    #    '2016-10-01': 3.5,
-    #    '2016-10-02': 2.0,
-    #    ...
-    # }
+    #
+    def data
+      {
+        week1: {
+                  '2016-10-01': 3.5,
+                  '2016-10-02': 2.0,
+                  '2016-10-03': 1.0,
+                  '2016-10-04': 5.0,
+                  '2016-10-05': 4.5,
+                  '2016-10-06': 0.0,
+                  '2016-10-07': 0.0
+                  },
+        week2: {
+                  '2016-10-01': 3.5,
+                  '2016-10-02': 2.0,
+                  '2016-10-03': 1.0,
+                  '2016-10-04': 5.0,
+                  '2016-10-05': 4.5,
+                  '2016-10-06': 0.0,
+                  '2016-10-07': 0.0
+                  }
+      }
+    end
+    # => min: 1.0
+    # => avg: 3.2
+    # => max: 5.0
 
     # plot.lines()
   end
