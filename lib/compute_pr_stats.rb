@@ -1,29 +1,5 @@
 class ComputePRStats
 
-  DUMMY_DATA =      {
-        week1: {
-                  '2016-10-01': 3.5,
-                  '2016-10-02': 2.0,
-                  '2016-10-03': 1.0,
-                  '2016-10-04': 5.0,
-                  '2016-10-05': 4.5
-                  },
-        week2: {
-                  '2016-10-01': 2.0,
-                  '2016-10-02': 4.0,
-                  '2016-10-03': 4.5,
-                  '2016-10-04': 1.0,
-                  '2016-10-05': 3.5
-                  },
-        week3: {
-                  '2016-10-01': 3.5,
-                  '2016-10-02': 2.0,
-                  '2016-10-03': 1.0,
-                  '2016-10-04': 5.0,
-                  '2016-10-05': 4.5
-                  }
-      }
-
   attr_accessor :pull_requests
 
   def initialize(pull_requests)
@@ -71,7 +47,7 @@ class ComputePRStats
       days = lead_time.length
       sum = lead_time.inject(:+)
       avg = sum / days
-      avg_lead_time << avg
+      avg_lead_time << avg.round(2)
     end.uniq.flatten
   end
 
@@ -83,7 +59,7 @@ class ComputePRStats
       value.map do |key2, value2|
         lead_time << value2
       end
-      max_lead_time << lead_time.max
+      max_lead_time << lead_time.max.round(2)
     end.uniq.flatten
   end
 
@@ -95,7 +71,7 @@ class ComputePRStats
       value.map do |key2, value2|
         lead_time << value2
       end
-      min_lead_time << lead_time.min
+      min_lead_time << lead_time.min.round(2)
     end.uniq.flatten
   end
 
@@ -103,6 +79,6 @@ class ComputePRStats
 
   def calculate_lead_time(p)
     elapsed = (p.closed_at - p.created_at)/(60 * 60 * 24)
-    elapsed.round(2)
+    elapsed
   end
 end
