@@ -1,13 +1,11 @@
 class ComputePRStats
 
-  attr_accessor :pull_requests
-
   def initialize(pull_requests)
     @pull_requests = pull_requests
   end
 
   def lead_time_per_pull_request
-    pull_requests.map do |p|
+    @pull_requests.map do |p|
       {
         :date => p.created_at.beginning_of_day.to_date,
         :lead_time => calculate_lead_time(p)
@@ -37,9 +35,8 @@ class ComputePRStats
   end
 
   def avg
-    data = split_by_week
     avg_lead_time = []
-    data.map do |key, value|
+    split_by_week.map do |key, value|
       lead_time = []
       value.map do |key2, value2|
         lead_time << value2
@@ -52,9 +49,8 @@ class ComputePRStats
   end
 
   def max
-    data = split_by_week
     max_lead_time =[]
-    data.map do |key, value|
+    split_by_week.map do |key, value|
       lead_time = []
       value.map do |key2, value2|
         lead_time << value2
@@ -64,9 +60,8 @@ class ComputePRStats
   end
 
   def min
-    data = split_by_week
     min_lead_time =[]
-    data.map do |key, value|
+    split_by_week.map do |key, value|
       lead_time = []
       value.map do |key2, value2|
         lead_time << value2

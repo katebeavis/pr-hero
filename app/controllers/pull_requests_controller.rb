@@ -17,7 +17,7 @@ class PullRequestsController < ApplicationController
           pointInterval: 1.week)
 
         f.yAxis [
-          {title: {text: "Lead Time", margin: 10} },
+          {title: {text: "Lead Time (days)", margin: 10} },
         ]
         f.xAxis [
           { type: 'datetime',
@@ -28,6 +28,17 @@ class PullRequestsController < ApplicationController
 
         f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
         f.chart({defaultSeriesType: "line"})
+    end
+
+    @chart_globals = LazyHighCharts::HighChartGlobals.new do |f|
+      f.global(useUTC: false)
+      f.chart(
+        borderWidth: 2,
+        plotBackgroundColor: "rgba(255, 255, 255, .9)",
+        plotShadow: false,
+        plotBorderWidth: 1
+      )
+      f.colors(["#0000FF", "#FF0000", "#008000", "#f15c80", "#e4d354"])
     end
   end
 end

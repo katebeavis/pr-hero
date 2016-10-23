@@ -1,17 +1,5 @@
 section
   h1 PR Hero
 
+  = high_chart_globals(@chart_globals)
   = high_chart("pr", @chart)
-
-  / table.table
-  /   thead.thead-inverse
-  /     tr
-  /       th Name
-  /       th Author
-  /       th State
-  /   tbody
-  /     - @pull_requests.each do |p|
-  /       tr
-  /         td = p.title
-  /         td = p.user.login
-  /         td = p.state
