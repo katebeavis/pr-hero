@@ -30,21 +30,6 @@ class ComputePRStats
     @pull_requests = pull_requests
   end
 
-  def closed_at
-    @pull_requests.map do |p|
-      p.closed_at.strftime("%Y/%m/%d")
-    end
-  end
-
-  def lead_time
-    @pull_requests.map do |p|
-      t1 = p.created_at
-      t2 = p.closed_at
-      elapsed = (t2 - t1)/(60 * 60 * 24)
-      elapsed.round(2)
-    end
-  end
-
   def data_structure
     pull_requests.each_with_object({}) do |pull_request, h|
       h[pull_request.closed_at.strftime("%Y/%m/%d")] = { "title" => pull_request.title}

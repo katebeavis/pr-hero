@@ -11,6 +11,10 @@ class PullRequestsController < ApplicationController
       f.title(text: "PR Lead Time")
         f.series(name: "Average", data: @pr_stats.avg, pointStart: Time.parse("2016-09-20").getutc,
           pointInterval: 1.week)
+        f.series(name: "Maximum", data: @pr_stats.max, pointStart: Time.parse("2016-09-20").getutc,
+          pointInterval: 1.week)
+        f.series(name: "Minimum", data: @pr_stats.min, pointStart: Time.parse("2016-09-20").getutc,
+          pointInterval: 1.week)
 
         f.yAxis [
           {title: {text: "Lead Time", margin: 10} },
@@ -26,14 +30,4 @@ class PullRequestsController < ApplicationController
         f.chart({defaultSeriesType: "line"})
     end
   end
-
-  def lead_time
-    @pull_requests.map do |p|
-      t1 = p.created_at
-      t2 = Time.now
-      elapsed = (t2 - t1)/(60 * 60 * 24)
-      elapsed.round(2)
-    end
-  end
-
 end

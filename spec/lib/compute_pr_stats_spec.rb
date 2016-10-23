@@ -15,19 +15,6 @@ describe 'compute pr stats' do
                   }
       } }
 
-  describe '#closed_at' do
-    before do
-      VCR.insert_cassette('closed_pull_requests')
-    end
-    after do
-      VCR.eject_cassette
-    end
-
-    xit 'returns closed at dates for PR\'s' do
-      expect(compute.max(compute.data[:week1])).to eq('2016/10/21')
-    end
-  end
-
   describe '#avg' do
     it 'returns the average pr lead time for every week that has data' do
       expect(compute.avg).to eq([3.2, 3.0, 3.2])

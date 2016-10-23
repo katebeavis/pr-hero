@@ -37,19 +37,4 @@ describe 'octokit api' do
       expect(octokit.pull_requests.count).to eq(57)
     end
   end
-
-  describe '#lead_time' do
-    before do
-      VCR.insert_cassette('open_pull_requests')
-    end
-    after do
-      VCR.eject_cassette
-    end
-
-    xit 'returns the lead time for a pull request' do
-      Timecop.freeze('2016-10-20 17:46:04 +0100')
-      expect(octokit.lead_time.last).to eq(3.41)
-      Timecop.return
-    end
-  end
 end
