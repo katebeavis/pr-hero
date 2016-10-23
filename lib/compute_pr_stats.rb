@@ -30,10 +30,21 @@ class ComputePRStats
     @pull_requests = pull_requests
   end
 
-  def data_structure
-    pull_requests.each_with_object({}) do |pull_request, h|
-      h[pull_request.closed_at.strftime("%Y/%m/%d")] = { "title" => pull_request.title}
+  def lead_time_per_pull_request
+    pull_requests.map do |p|
+      {
+        :date => p.created_at.beginning_of_day.strftime("%Y-%m-%d"),
+        :lead_time => calculate_lead_time(p)
+      }
     end
+  end
+
+  def lead_time_per_day
+    totals = Hash.new(0)
+    lead_time_per_pull_request.each do |data|
+      totals[data[:date]] += data[:lead_time]
+    end
+    totals
   end
 
   def avg
@@ -73,5 +84,12 @@ class ComputePRStats
       end
       min_lead_time << lead_time.min
     end.uniq.flatten
+  end
+
+  private
+
+  def calculate_lead_time(p)
+    elapsed = (p.closed_at - p.created_at)/(60 * 60 * 24)
+    elapsed.round(2)
   end
 end
