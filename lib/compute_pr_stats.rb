@@ -15,65 +15,38 @@ class ComputePRStats
 
   def lead_time_per_day
     totals = Hash.new(0)
-    lead_time_per_pull_request.each do |data|
-      totals[data[:date]] += data[:lead_time]
-    end
+    lead_time_per_pull_request.each { |data| totals[data[:date]] += data[:lead_time] }
     totals
   end
 
   def split_by_week
-    by_week = Hash.new(0)
-    lead_time_per_day.each do |d, v|
-      if by_week[d.cweek] == 0
-        by_week[d.cweek] = {}
-        by_week[d.cweek][d] = v
-      else
-        by_week[d.cweek][d] = v
-      end
+    week = Hash.new(0)
+    lead_time_per_day.each do |data|
+      week[data.first.cweek] = {} unless week[data.first.cweek] != 0
+      week[data.first.cweek][data.first] = data.last
     end
-    by_week.reverse_each.to_h
+    week.reverse_each.to_h
   end
 
   def avg
     avg_lead_time = []
-    split_by_week.map do |key, value|
-      lead_time = []
-      value.map do |key2, value2|
-        lead_time << value2
-      end
-      days = lead_time.length
-      sum = lead_time.inject(:+)
-      avg = sum / days
-      avg_lead_time << avg.round(2)
-    end.uniq.flatten
+    split_by_week.map do |data|
+      lead_time = data[1].values
+      avg = (lead_time.inject(:+) / lead_time.count).round(2)
+    end
   end
 
   def max
-    max_lead_time =[]
-    split_by_week.map do |key, value|
-      lead_time = []
-      value.map do |key2, value2|
-        lead_time << value2
-      end
-      max_lead_time << lead_time.max.round(2)
-    end.uniq.flatten
+    split_by_week.map { |data| max_lead_time = data[1].values.max.round(2) }
   end
 
   def min
-    min_lead_time =[]
-    split_by_week.map do |key, value|
-      lead_time = []
-      value.map do |key2, value2|
-        lead_time << value2
-      end
-      min_lead_time << lead_time.min.round(2)
-    end.uniq.flatten
+    split_by_week.map { |data| min_lead_time = data[1].values.min.round(2) }
   end
 
   private
 
   def calculate_lead_time(p)
     elapsed = (p.closed_at - p.created_at)/(60 * 60 * 24)
-    elapsed
   end
 end
