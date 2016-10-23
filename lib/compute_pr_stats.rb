@@ -78,7 +78,15 @@ class ComputePRStats
     end.uniq.flatten
   end
 
-  def min(data)
-    data.min_by(&:last).last
+  def min
+    data = DUMMY_DATA
+    min_lead_time =[]
+    data.map do |key, value|
+      lead_time = []
+      value.map do |key2, value2|
+        lead_time << value2
+      end
+      min_lead_time << lead_time.min
+    end.uniq.flatten
   end
 end

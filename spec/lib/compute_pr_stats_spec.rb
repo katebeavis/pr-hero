@@ -42,7 +42,7 @@ describe 'compute pr stats' do
 
   describe '#min' do
     it 'returns the min pr lead time for a week' do
-      expect(compute.min(dummy_data[:week1])).to eq(1)
+      expect(compute.min).to eq([1.0, 1.0, 1.0])
     end
   end
 end
