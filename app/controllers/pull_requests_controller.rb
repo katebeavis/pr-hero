@@ -9,12 +9,12 @@ class PullRequestsController < ApplicationController
     @pr_stats = ComputePRStats.new(@pull_requests)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: "PR Lead Time")
-        f.series(name: "Average", data: DUMMY_DATA, pointStart: Time.parse("2016-09-20").getutc,
+        f.series(name: "Average", data: @pr_stats.avg, pointStart: Time.parse("2016-09-20").getutc,
           pointInterval: 1.week)
-        # f.series(name: "Maximum", data: @pr_stats.max, pointStart: Time.parse("2016-09-20").getutc,
-        #   pointInterval: 1.week)
-        # f.series(name: "Minimum", data: @pr_stats.min, pointStart: Time.parse("2016-09-20").getutc,
-        #   pointInterval: 1.week)
+        f.series(name: "Maximum", data: @pr_stats.max, pointStart: Time.parse("2016-09-20").getutc,
+          pointInterval: 1.week)
+        f.series(name: "Minimum", data: @pr_stats.min, pointStart: Time.parse("2016-09-20").getutc,
+          pointInterval: 1.week)
 
         f.yAxis [
           {title: {text: "Lead Time", margin: 10} },

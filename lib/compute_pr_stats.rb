@@ -33,7 +33,7 @@ class ComputePRStats
   def lead_time_per_pull_request
     pull_requests.map do |p|
       {
-        :date => p.created_at.beginning_of_day.strftime("%Y-%m-%d"),
+        :date => p.created_at.beginning_of_day.to_date,
         :lead_time => calculate_lead_time(p)
       }
     end
@@ -47,8 +47,21 @@ class ComputePRStats
     totals
   end
 
+  def split_by_week
+    by_week = Hash.new(0)
+    lead_time_per_day.each do |d, v|
+      if by_week[d.cweek] == 0
+        by_week[d.cweek] = {}
+        by_week[d.cweek][d] = v
+      else
+        by_week[d.cweek][d] = v
+      end
+    end
+    by_week.reverse_each.to_h
+  end
+
   def avg
-    data = DUMMY_DATA
+    data = split_by_week
     avg_lead_time = []
     data.map do |key, value|
       lead_time = []
@@ -63,7 +76,7 @@ class ComputePRStats
   end
 
   def max
-    data = DUMMY_DATA
+    data = split_by_week
     max_lead_time =[]
     data.map do |key, value|
       lead_time = []
@@ -75,7 +88,7 @@ class ComputePRStats
   end
 
   def min
-    data = DUMMY_DATA
+    data = split_by_week
     min_lead_time =[]
     data.map do |key, value|
       lead_time = []
