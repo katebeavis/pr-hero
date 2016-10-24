@@ -2,15 +2,26 @@ class ComputePRStats
 
   def initialize(pull_requests)
     @pull_requests = pull_requests
+    @open_pull_requests = pull_requests
   end
 
   def lead_time_per_pull_request
     @pull_requests.map do |p|
       {
         :date => p.created_at.beginning_of_day.to_date,
-        :lead_time => calculate_lead_time(p)
+        :lead_time => calculate_lead_time(p.closed_at, p)
       }
     end
+  end
+
+  def open_pull_request_stats
+    @open_pull_requests.map do |p|
+      {
+        :title => p.title,
+        :author => p.user.login,
+        :lead_time => calculate_lead_time(Time.now, p).round(2)
+      }
+     end.sort_by { |data| data[:lead_time] }.reverse
   end
 
   def lead_time_per_day
@@ -46,7 +57,7 @@ class ComputePRStats
 
   private
 
-  def calculate_lead_time(p)
-    elapsed = (p.closed_at - p.created_at)/(60 * 60 * 24)
+  def calculate_lead_time(value, p)
+    elapsed = (value - p.created_at)/(60 * 60 * 24)
   end
 end
