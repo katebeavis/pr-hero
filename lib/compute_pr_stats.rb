@@ -25,18 +25,16 @@ class ComputePRStats
   end
 
   def lead_time_per_day
-    totals = Hash.new(0)
-    lead_time_per_pull_request.each { |data| totals[data[:date]] += data[:lead_time] }
-    totals
+    lead_time_per_pull_request.each_with_object(Hash.new(0)){|hash, totals|
+      totals[hash[:date]] += hash[:lead_time]
+    }
   end
 
   def split_by_week
-    week = Hash.new(0)
-    lead_time_per_day.each do |data|
-      week[data.first.cweek] = {} unless week[data.first.cweek] != 0
-      week[data.first.cweek][data.first] = data.last
-    end
-    week.reverse_each.to_h
+    lead_time_per_day.each_with_object({}){|(k, v), week|
+      week[k.cweek] ||= {}
+      week[k.cweek][k] = v
+    }.reverse_each.to_h
   end
 
   def avg
@@ -48,11 +46,11 @@ class ComputePRStats
   end
 
   def max
-    split_by_week.map { |data| max_lead_time = data[1].values.max.round(2) }
+    split_by_week.map { |data| data[1].values.max.round(2) }
   end
 
   def min
-    split_by_week.map { |data| min_lead_time = data[1].values.min.round(2) }
+    split_by_week.map { |data|  data[1].values.min.round(2) }
   end
 
   private
