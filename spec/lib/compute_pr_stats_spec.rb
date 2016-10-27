@@ -68,4 +68,10 @@ describe 'compute pr stats' do
       expect(compute.min).to eq([0.76, 0.09, 0.02, 0.87, 1.76])
     end
   end
+
+  describe 'earliest_pr' do
+    it 'returns the closed date of the first pr closed' do
+      expect(compute.earliest_pr).to eq(Date.new(2016, 9, 21))
+    end
+  end
 end

@@ -8,8 +8,8 @@ class ComputePRStats
   def lead_time_per_pull_request
     @pull_requests.map do |p|
       {
-        :date => p.created_at.beginning_of_day.to_date,
-        :lead_time => calculate_lead_time(p.closed_at, p)
+        date: p.created_at.beginning_of_day.to_date,
+        lead_time: calculate_lead_time(p.closed_at, p)
       }
     end
   end
@@ -17,9 +17,9 @@ class ComputePRStats
   def open_pull_request_stats
     @open_pull_requests.map do |p|
       {
-        :title => p.title,
-        :author => p.user.login,
-        :lead_time => calculate_lead_time(Time.now, p).round(2)
+        title: p.title,
+        author: p.user.login,
+        lead_time: calculate_lead_time(Time.now, p).round(2)
       }
      end.sort_by { |data| data[:lead_time] }.reverse
   end
@@ -50,7 +50,11 @@ class ComputePRStats
   end
 
   def min
-    split_by_week.map { |data|  data[1].values.min.round(2) }
+    split_by_week.map { |data| data[1].values.min.round(2) }
+  end
+
+  def earliest_pr
+    @pull_requests.map{|h| h[:closed_at]}.min.to_date
   end
 
   private

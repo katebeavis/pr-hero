@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'octokit_api'
 
 RSpec.describe PullRequestsController, type: :controller do
 
@@ -17,6 +18,7 @@ RSpec.describe PullRequestsController, type: :controller do
 
       expect(response.body).to have_text('PR Hero')
     end
+  
   end
 
   describe 'high chart' do

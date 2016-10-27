@@ -4,15 +4,15 @@ section
   = high_chart_globals(@chart_globals)
   = high_chart("pr", @chart)
 
-  table.table
-    thead.thead-inverse
-      tr
-        th Name
-        th Author
-        th Lead Time
-    tbody
-      - @open_pr_stats.open_pull_request_stats.each do |p|
-        tr
-          td = p[:title]
-          td = p[:author]
-          td = "#{p[:lead_time]} days"
+  / table.table
+  /   thead.thead-inverse
+  /     tr
+  /       th Name
+  /       th Author
+  /       th Lead Time
+  /   tbody
+  /     - @open_pr_stats.open_pull_request_stats.each do |p|
+  /       tr
+  /         td = p[:title]
+  /         td = p[:author]
+  /         td = "#{p[:lead_time]} days"

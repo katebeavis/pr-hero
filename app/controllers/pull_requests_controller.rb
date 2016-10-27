@@ -6,16 +6,16 @@ class PullRequestsController < ApplicationController
   def index
     client = OctokitApi.new
     @pull_requests = client.pull_requests
-    @open_pull_requests = client.pull_requests('open')
+    # @open_pull_requests = client.pull_requests('open')
     @pr_stats = ComputePRStats.new(@pull_requests)
     @open_pr_stats = ComputePRStats.new(@open_pull_requests)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: "PR Lead Time")
-        f.series(name: "Average", data: @pr_stats.avg, pointStart: Time.parse("2016-09-20").getutc,
+        f.series(name: "Average", data: @pr_stats.avg, pointStart: @pr_stats.earliest_pr,
           pointInterval: 1.week)
-        f.series(name: "Maximum", data: @pr_stats.max, pointStart: Time.parse("2016-09-20").getutc,
+        f.series(name: "Maximum", data: @pr_stats.max, pointStart: @pr_stats.earliest_pr,
           pointInterval: 1.week)
-        f.series(name: "Minimum", data: @pr_stats.min, pointStart: Time.parse("2016-09-20").getutc,
+        f.series(name: "Minimum", data: @pr_stats.min, pointStart: @pr_stats.earliest_pr,
           pointInterval: 1.week)
 
         f.yAxis [

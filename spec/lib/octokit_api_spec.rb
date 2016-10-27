@@ -8,10 +8,6 @@ describe 'octokit api' do
     expect(octokit).to be_a(OctokitApi)
   end
 
-  it 'returns the authenticated user' do
-    expect(octokit.user.name).to eq("Kate Beavis")
-  end
-
   describe '#user' do
     it 'returns the authenticated user' do
       VCR.use_cassette('auth_user_information') do
