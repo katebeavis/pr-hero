@@ -25,6 +25,7 @@ gem 'slim-rails'
 gem 'octokit', '~> 4.3'
 gem 'awesome_print', '~> 1.7'
 gem 'lazy_high_charts', '~> 1.5', '>= 1.5.4'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'byebug', platform: :mri
