@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'octokit api' do
+RSpec.describe 'OctokitApi' do
   let(:octokit) { OctokitApi.new }
 
   it 'is an instance of OctokitApi' do

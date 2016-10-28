@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'compute pr stats' do
+RSpec.describe 'ComputePrStats' do
   let(:octokit) { OctokitApi.new }
   let(:compute) { ComputePRStats.new(octokit.pull_requests) }
 
