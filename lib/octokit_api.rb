@@ -18,4 +18,9 @@ class OctokitApi
     @client.pull_requests_comments repo
   end
 
+  def issue_comments(repo='zopaUK/Helium')
+    @client.auto_paginate = true
+    @client.issues_comments repo
+  end
+
 end
