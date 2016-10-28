@@ -47,8 +47,8 @@ RSpec.describe 'ComputeCommentStats' do
   end
 
   describe '#remove_duplicate_pull_requests' do
-    it 'returns an array' do
-      expect(compute_comment.remove_duplicate_pull_requests).to be_a(Array)
+    it 'returns an array of users and number of pr\'s contributed to'  do
+      expect(compute_comment.remove_duplicate_pull_requests).to eq([["gbkr", 36], ["marmarlade", 7], ["mottalrd", 74], ["Tomastomaslol", 2], ["orrinward", 22], ["TomGro...dge", 33], ["katebeavis", 19], ["uxdesigntom", 2], ["lukesmith", 3], ["saracen", 2], ["zopadev", 5]])
     end
   end
 end
