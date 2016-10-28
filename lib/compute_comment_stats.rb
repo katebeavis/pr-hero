@@ -3,6 +3,9 @@ class ComputeCommentStats
     @pull_requests = pull_requests
   end
 
-  def hello
+  def get_comments_urls
+    url = []
+    @pull_requests.map { |p| url << p.comments_url }
+    url
   end
 end
