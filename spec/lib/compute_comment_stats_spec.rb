@@ -26,4 +26,10 @@ RSpec.describe 'ComputeCommentStats' do
       expect(compute_comment.get_comments_urls.first).to eq("https://api.github.com/repos/zopaUK/Helium/issues/59/comments")
     end
   end
+
+  describe '#get_all_comments' do
+    it 'returns an array' do
+      expect(compute_comment.get_all_comments).to eq(5)
+    end
+  end
 end

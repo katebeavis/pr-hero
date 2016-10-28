@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'octokit_api'
 
 RSpec.describe 'OctokitApi' do
   let(:octokit) { OctokitApi.new }
@@ -30,6 +31,24 @@ RSpec.describe 'OctokitApi' do
 
     it 'returns the amount of closed pull requests' do
       expect(octokit.pull_requests.count).to eq(57)
+    end
+  end
+
+  describe '#comments' do
+    before do
+      VCR.insert_cassette('comments_on_pull_requests')
+    end
+    after do
+      VCR.eject_cassette
+    end
+
+    it 'returns an array object' do
+      expect(octokit.comments).to be_a(Array)
+    end
+
+    it 'returns the amount of closed pull requests' do
+      binding.pry
+      expect(octokit.comments.count).to eq(489)
     end
   end
 end

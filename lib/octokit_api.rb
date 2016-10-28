@@ -13,4 +13,9 @@ class OctokitApi
     @client.issues repo, state: state
   end
 
+  def comments(repo='zopaUK/Helium')
+    @client.auto_paginate = true
+    @client.pull_requests_comments repo
+  end
+
 end
