@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'octokit_api'
 
 RSpec.describe PullRequestsController, type: :controller do
 

@@ -5,8 +5,25 @@
   </head>
   <body>
     <h1>Hi Pioneers</h1>
-    <p>
-      Sample mail sent using smtp.
-    </p>
+      <%= @message %>
+      <p>
+        Last weeks average pull request lead time was <%= @last_week_stats[0] %> days
+      </p>
+      <p>
+        The previous weeks average pull request lead time was <%= @two_weeks_ago_stats[0] %> days
+      </p>
+      <p>
+        Last weeks max pull request lead time was <%= @last_week_stats[1] %> days
+      </p>
+      <p>
+        The previous weeks max pull request lead time was <%= @two_weeks_ago_stats[1] %> days
+      </p>
+      <p>
+        Last weeks min pull request lead time was <%= @last_week_stats[2] %> days
+      </p>
+      <p>
+        The previous weeks min pull request lead time was <%= @two_weeks_ago_stats[2] %> days
+      </p>
+
   </body>
 </html>

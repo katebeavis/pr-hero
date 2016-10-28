@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   root 'pull_requests#index'
 
-  resource :pull_requests
+  resource :pull_requests, :only => [:index]
   get '/pull_requests' => 'pull_requests#index'
+
+  resource :comments, :only => [:index]
+  get '/comments' => 'comments#index'
 end
