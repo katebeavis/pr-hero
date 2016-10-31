@@ -2,10 +2,8 @@ class ComputeCommentStats
 
   USERS = ['gbkr', 'mottalrd', 'katebeavis', 'TomGroombridge']
 
-  def initialize(comments, issue_comments)
-    @comments = comments
-    @issue_comments = issue_comments
-    @merged_comments = (@comments << @issue_comments).flatten!
+  def initialize(merged_comments)
+    @merged_comments = merged_comments
   end
 
   def comment_authors
@@ -22,34 +20,38 @@ class ComputeCommentStats
     array
   end
 
-  def number_of_prs_contributed_to
+  def number_of_prs_contributed_to(time_period)
     array = []
     get_comments_by_user(comment_authors).each do |comments|
-      urls = prepare_url_string(comments)
-      num_of_dup_issues = find_duplicate_urls(urls)
-      array << [comments[0][:user][:login], (comments.count - num_of_dup_issues)] if USERS.include? comments[0][:user][:login]
+      valid_comments = select_comments_based_on_time_period(comments, time_period)
+      urls = prepare_url_string(valid_comments)
+      array << [comments[0][:user][:login], (valid_comments.count - number_of_duplicate_urls(urls))] if USERS.include? comments[0][:user][:login]
     end
     array
   end
 
-  def anonymised_contribution_data
-    randomise_names(number_of_prs_contributed_to)
+  def anonymised_contribution_data(time_period)
+    randomise_names(number_of_prs_contributed_to(time_period))
+  end
+
+  def select_comments_based_on_time_period(comments, time_period)
+    comments.select { |c| c[:created_at] >= time_period}
   end
 
   def prepare_url_string(comments)
     comments.map { |c| c[:html_url].partition('#').first }
   end
 
-  def find_duplicate_urls(urls)
+  def number_of_duplicate_urls(urls)
     duplicate_urls = urls.select { |url| urls.count(url) > 1 }
-    return duplicate_urls.count - duplicate_urls.uniq.count
+    duplicate_urls.count - duplicate_urls.uniq.count
   end
 
   def randomise_names(user_array)
     letter = 'A'
-    user_array.each do |array, amount|
+    user_array.each { |array, amount|
       array.replace(letter)
       letter = letter.next
-    end
+    }
   end
 end

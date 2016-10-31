@@ -23,4 +23,8 @@ class OctokitApi
     @client.issues_comments repo
   end
 
+  def merged_comments
+    @merged_comments = (comments << issue_comments).flatten!
+  end
+
 end

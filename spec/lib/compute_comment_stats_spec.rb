@@ -4,7 +4,7 @@ require 'octokit_api'
 
 RSpec.describe 'ComputeCommentStats' do
   let(:octokit) { OctokitApi.new }
-  let(:compute_comment) { ComputeCommentStats.new(octokit.comments, octokit.issue_comments) }
+  let(:compute_comment) { ComputeCommentStats.new(octokit.merged_comments,) }
   let(:users) { compute_comment.comment_authors }
 
   before do
@@ -35,7 +35,6 @@ RSpec.describe 'ComputeCommentStats' do
   end
 
   describe '#get_comments_by_user' do
-
     it 'returns an array' do
       expect(compute_comment.get_comments_by_user(users)).to be_a(Array)
     end
@@ -50,8 +49,21 @@ RSpec.describe 'ComputeCommentStats' do
   end
 
   describe '#number_of_prs_contributed_to' do
-    it 'returns an array of users and number of pr\'s contributed to' do
-      expect(compute_comment.number_of_prs_contributed_to).to eq([["gbkr", 30], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]])
+
+    context 'all time' do
+      let(:time_period) { '2016-09-21T23:45:02Z' }
+
+      it 'returns an array of users and number of pr\'s contributed to' do
+        expect(compute_comment.number_of_prs_contributed_to(time_period)).to eq([["gbkr", 29], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]])
+      end
+    end
+
+    context 'last 7 days' do
+      let(:time_period) { '2016-10-21 12:55:26 +0100' }
+
+      it 'returns an array of users and number of pr\'s contributed to' do
+        expect(compute_comment.number_of_prs_contributed_to(time_period)).to eq([["gbkr", 5], ["mottalrd", 15], ["katebeavis", 8], ["TomGroombridge", 8]])
+      end
     end
   end
 
@@ -63,21 +75,21 @@ RSpec.describe 'ComputeCommentStats' do
     end
   end
 
-  describe '#find_duplicate_urls' do
+  describe '#number_of_duplicate_urls' do
     let(:urls) { ["https://github.com/zopaUK/Helium/pull/75", "https://github.com/zopaUK/Helium/pull/71",
     "https://github.com/zopaUK/Helium/pull/8","https://github.com/zopaUK/Helium/pull/71",
     "https://github.com/zopaUK/Helium/pull/75"] }
     
     it 'returns the number of duplicate urls' do
-      expect(compute_comment.find_duplicate_urls(urls)).to eq(2)
+      expect(compute_comment.number_of_duplicate_urls(urls)).to eq(2)
     end
   end
 
   describe '#randomise_names' do
-    let(:user_array) { [["gbkr", 30], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]] }
+    let(:user_array) { [["gbkr", 29], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]] }
     
     it 'replaces user names with a letter' do
-      expect(compute_comment.randomise_names(user_array)).to eq([["A", 30], ["B", 47], ["C", 37], ["D", 21]])
+      expect(compute_comment.randomise_names(user_array)).to eq([["A", 29], ["B", 47], ["C", 37], ["D", 21]])
     end
   end
 end

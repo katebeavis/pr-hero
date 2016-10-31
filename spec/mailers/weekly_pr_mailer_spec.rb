@@ -34,13 +34,13 @@ RSpec.describe WeeklyPrMailer, type: :mailer do
 
   describe '#last_week' do
     it 'returns an array of the average, max and min lead time for the last week pr' do
-      expect(weekly_mailer.last_week(-2)).to eq([4.76, 11.25, 1.81])
+      expect(weekly_mailer.last_week(-2)).to eq([2.11, 4.05, 0.05])
     end
   end
 
   describe '#two_weeks_ago' do
     it 'returns an array of the average, max and min lead time for two weeks ago pr' do
-      expect(weekly_mailer.two_weeks_ago(-3)).to eq([2.85, 5.33, 0.87])
+      expect(weekly_mailer.two_weeks_ago(-3)).to eq([4.76, 11.25, 1.81])
     end
   end
 
