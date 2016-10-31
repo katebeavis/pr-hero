@@ -55,22 +55,6 @@ RSpec.describe 'ComputeCommentStats' do
     end
   end
 
-  describe '#remove_duplicate_pull_requests' do
-    let(:pr_comments) { [{:pull_request_url=>"https://github.com/zopaUK/Helium/pull/11"},
-                         {:pull_request_url=>"https://github.com/zopaUK/Helium/pull/11"}]
-                      }
-    let(:issue_comments) { [{:issue_url=>"https://api.github.com/repos/zopaUK/Helium/issues/68"},
-                            {:issue_url=>"https://api.github.com/repos/zopaUK/Helium/issues/68"}]
-                         }
-    it 'removes pr comments if there are pr comments that already exist for that pull request' do
-      expect(compute_comment.remove_duplicate_pull_requests(pr_comments).count).to eq(1)
-    end
-
-    it 'removes issue comments if there are issue comments that already exist for that pull request' do
-      expect(compute_comment.remove_duplicate_pull_requests(issue_comments).count).to eq(1)
-    end
-  end
-
   describe '#prepare_url_string' do
    let(:pr) { [{:html_url=>"https://github.com/zopaUK/Helium/pull/11#discussion_r81115470"}] }
     it 'removes everything after the pull request number' do
@@ -78,12 +62,12 @@ RSpec.describe 'ComputeCommentStats' do
     end
   end
 
-  describe '#remove_duplicate_urls' do
+  describe '#find_duplicate_urls' do
     let(:urls) { ["https://github.com/zopaUK/Helium/pull/75", "https://github.com/zopaUK/Helium/pull/71",
     "https://github.com/zopaUK/Helium/pull/8","https://github.com/zopaUK/Helium/pull/71",
     "https://github.com/zopaUK/Helium/pull/75"] }
-    it 'returns an array of urls' do
-      expect(compute_comment.remove_duplicate_urls(urls)).to eq(["https://github.com/zopaUK/Helium/pull/75", "https://github.com/zopaUK/Helium/pull/71"])
+    it 'returns the number of duplicate urls' do
+      expect(compute_comment.find_duplicate_urls(urls)).to eq(2)
     end
   end
 end

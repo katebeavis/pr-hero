@@ -25,23 +25,19 @@ class ComputeCommentStats
   def number_of_prs_contributed_to
     array = []
     get_comments_by_user(comment_authors).each do |comments|
-      pr = remove_duplicate_pull_requests(comments)
-      urls = prepare_url_string(pr)
-      dup_issues = remove_duplicate_urls(urls)
-      array << [pr[0][:user][:login], (pr.count - dup_issues.count)] if USERS.include? pr[0][:user][:login]
+      urls = prepare_url_string(comments)
+      num_of_dup_issues = find_duplicate_urls(urls)
+      array << [comments[0][:user][:login], (comments.count - num_of_dup_issues)] if USERS.include? comments[0][:user][:login]
     end
     array
   end
 
-  def remove_duplicate_pull_requests(comments)
-    comments.uniq { |c| [c[:pull_request_url], c[:issue_url]] }
+  def prepare_url_string(comments)
+    comments.map { |c| c[:html_url].partition('#').first }
   end
 
-  def prepare_url_string(pr)
-    pr.map { |c| c[:html_url].partition('#').first }
-  end
-
-  def remove_duplicate_urls(urls)
-    urls.select { |url| urls.count(url) > 1 }.uniq
+  def find_duplicate_urls(urls)
+    duplicate_urls = urls.select { |url| urls.count(url) > 1 }
+    return duplicate_urls.count - duplicate_urls.uniq.count
   end
 end
