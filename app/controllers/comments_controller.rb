@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment_stats = ComputeCommentStats.new(comments,issue_comments)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: "Number of PR's contributed to per team member")
-        f.series(name: "Team Members", data: @comment_stats.remove_duplicate_pull_requests, tickInterval: 1)
+        f.series(name: "Team Members", data: @comment_stats.number_of_prs_contributed_to, tickInterval: 1)
 
         f.yAxis [
           {title: {text: "Number"}, min: 0, allowDecimals: false, tickInterval: 1 },

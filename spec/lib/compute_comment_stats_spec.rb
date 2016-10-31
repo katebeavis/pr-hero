@@ -5,50 +5,85 @@ require 'octokit_api'
 RSpec.describe 'ComputeCommentStats' do
   let(:octokit) { OctokitApi.new }
   let(:compute_comment) { ComputeCommentStats.new(octokit.comments, octokit.issue_comments) }
+  let(:users) { compute_comment.comment_authors }
 
   before do
-    VCR.insert_cassette('issues_and_comments_on_pull_requests')
+    VCR.insert_cassette('pull_request_comments')
   end
   after do
     VCR.eject_cassette
   end
 
-  describe '#merged_comments' do
+  describe '#comment_authors' do
     it 'returns an array' do
-      expect(compute_comment.merged_comments.count).to eq(631)
+      expect(compute_comment.comment_authors).to be_a(Array)
     end
   end
 
-  describe '#get_comment_authors' do
+  describe '#comment_authors' do
     it 'returns an array' do
-      expect(compute_comment.get_commenter_user_names).to be_a(Array)
-    end
-  end
-
-  describe '#get_commenter_user_names' do
-    it 'returns an array' do
-      expect(compute_comment.get_commenter_user_names).to be_a(Array)
+      expect(compute_comment.comment_authors).to be_a(Array)
     end
 
     it 'returns all the users who have commented on pr\'s' do
-      expect(compute_comment.get_commenter_user_names.count).to eq(11)
+      expect(compute_comment.comment_authors.count).to eq(11)
     end
 
     it 'returns the names of the users who have commented on pr\'s' do
-      expect(compute_comment.get_commenter_user_names).to eq(["gbkr", "marmarlade", "mottalrd", "Tomastomaslol", "orrinward", "TomGroombridge", "katebeavis", "uxdesigntom", "lukesmith", "saracen", "zopadev"])
+      expect(compute_comment.comment_authors).to eq(["gbkr", "marmarlade", "mottalrd", "katebeavis", "orrinward", "Tomastomaslol", "TomGroombridge", "uxdesigntom", "lukesmith", "saracen", "zopadev"])
     end
   end
 
-  describe '#get_commenter_user_names' do
+  describe '#get_comments_by_user' do
+
     it 'returns an array' do
-      users = compute_comment.get_commenter_user_names
       expect(compute_comment.get_comments_by_user(users)).to be_a(Array)
+    end
+
+    it 'returns an array of comments for each user' do
+      expect(compute_comment.get_comments_by_user(users).count).to eq(11)
+    end
+
+    it 'returns the correct amount of comments for each user' do
+      expect(compute_comment.get_comments_by_user(users)[0].count).to eq(95)
+    end
+  end
+
+  describe '#number_of_prs_contributed_to' do
+    it 'returns an array of users and number of pr\'s contributed to' do
+      expect(compute_comment.number_of_prs_contributed_to).to eq([["gbkr", 30], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]])
     end
   end
 
   describe '#remove_duplicate_pull_requests' do
-    it 'returns an array of users and number of pr\'s contributed to'  do
-      expect(compute_comment.remove_duplicate_pull_requests).to eq([["gbkr", 36], ["marmarlade", 7], ["mottalrd", 74], ["Tomastomaslol", 2], ["orrinward", 22], ["TomGro...dge", 33], ["katebeavis", 19], ["uxdesigntom", 2], ["lukesmith", 3], ["saracen", 2], ["zopadev", 5]])
+    let(:pr_comments) { [{:pull_request_url=>"https://github.com/zopaUK/Helium/pull/11"},
+                         {:pull_request_url=>"https://github.com/zopaUK/Helium/pull/11"}]
+                      }
+    let(:issue_comments) { [{:issue_url=>"https://api.github.com/repos/zopaUK/Helium/issues/68"},
+                            {:issue_url=>"https://api.github.com/repos/zopaUK/Helium/issues/68"}]
+                         }
+    it 'removes pr comments if there are pr comments that already exist for that pull request' do
+      expect(compute_comment.remove_duplicate_pull_requests(pr_comments).count).to eq(1)
+    end
+
+    it 'removes issue comments if there are issue comments that already exist for that pull request' do
+      expect(compute_comment.remove_duplicate_pull_requests(issue_comments).count).to eq(1)
+    end
+  end
+
+  describe '#prepare_url_string' do
+   let(:pr) { [{:html_url=>"https://github.com/zopaUK/Helium/pull/11#discussion_r81115470"}] }
+    it 'removes everything after the pull request number' do
+      expect(compute_comment.prepare_url_string(pr)).to eq(["https://github.com/zopaUK/Helium/pull/11"])
+    end
+  end
+
+  describe '#remove_duplicate_urls' do
+    let(:urls) { ["https://github.com/zopaUK/Helium/pull/75", "https://github.com/zopaUK/Helium/pull/71",
+    "https://github.com/zopaUK/Helium/pull/8","https://github.com/zopaUK/Helium/pull/71",
+    "https://github.com/zopaUK/Helium/pull/75"] }
+    it 'returns an array of urls' do
+      expect(compute_comment.remove_duplicate_urls(urls)).to eq(["https://github.com/zopaUK/Helium/pull/75", "https://github.com/zopaUK/Helium/pull/71"])
     end
   end
 end
