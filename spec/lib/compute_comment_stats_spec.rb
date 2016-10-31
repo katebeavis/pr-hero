@@ -57,6 +57,7 @@ RSpec.describe 'ComputeCommentStats' do
 
   describe '#prepare_url_string' do
    let(:pr) { [{:html_url=>"https://github.com/zopaUK/Helium/pull/11#discussion_r81115470"}] }
+    
     it 'removes everything after the pull request number' do
       expect(compute_comment.prepare_url_string(pr)).to eq(["https://github.com/zopaUK/Helium/pull/11"])
     end
@@ -66,8 +67,17 @@ RSpec.describe 'ComputeCommentStats' do
     let(:urls) { ["https://github.com/zopaUK/Helium/pull/75", "https://github.com/zopaUK/Helium/pull/71",
     "https://github.com/zopaUK/Helium/pull/8","https://github.com/zopaUK/Helium/pull/71",
     "https://github.com/zopaUK/Helium/pull/75"] }
+    
     it 'returns the number of duplicate urls' do
       expect(compute_comment.find_duplicate_urls(urls)).to eq(2)
+    end
+  end
+
+  describe '#randomise_names' do
+    let(:user_array) { [["gbkr", 30], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]] }
+    
+    it 'replaces user names with a letter' do
+      expect(compute_comment.randomise_names(user_array)).to eq([["A", 30], ["B", 47], ["C", 37], ["D", 21]])
     end
   end
 end

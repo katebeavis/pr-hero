@@ -32,6 +32,10 @@ class ComputeCommentStats
     array
   end
 
+  def anonymised_contribution_data
+    randomise_names(number_of_prs_contributed_to)
+  end
+
   def prepare_url_string(comments)
     comments.map { |c| c[:html_url].partition('#').first }
   end
@@ -39,5 +43,13 @@ class ComputeCommentStats
   def find_duplicate_urls(urls)
     duplicate_urls = urls.select { |url| urls.count(url) > 1 }
     return duplicate_urls.count - duplicate_urls.uniq.count
+  end
+
+  def randomise_names(user_array)
+    letter = 'A'
+    user_array.each do |array, amount|
+      array.replace(letter)
+      letter = letter.next
+    end
   end
 end
