@@ -147,23 +147,21 @@ RSpec.describe 'ComputeCommentStats' do
   end
 
   describe '#below_average_team_members' do
-    let(:user_array) { [["gbkr", 2], ["mottalrd", 15], ["katebeavis", 4], ["TomGroombridge", 8]] }
     let(:time_period) { '2016-10-21 12:55:26 +0100' }
     
     context 'in the past 7 days' do
       it 'returns a the number of team members who have performed below average' do
-        expect(compute_comment.below_average_team_members(time_period)).to eq(2)
+        expect(compute_comment.below_average_team_members(time_period)).to eq(0)
       end
     end
   end
 
   describe '#above_average_team_members' do
-    let(:user_array) { [["gbkr", 2], ["mottalrd", 20], ["katebeavis", 18], ["TomGroombridge", 8]] }
     let(:time_period) { '2016-10-21 12:55:26 +0100' }
     
     context 'in the past 7 days' do
       it 'returns a the number of team members who have performed below average' do
-        expect(compute_comment.above_average_team_members(time_period)).to eq(2)
+        expect(compute_comment.above_average_team_members(time_period)).to eq(0)
       end
     end
   end

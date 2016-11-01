@@ -28,7 +28,6 @@ RSpec.describe PullRequestContributionMailer, type: :mailer do
   end
 
   describe '#print_below_average_stats_message' do
-
     it 'returns the correct message' do
       pull_request_mailer.instance_variable_set(:@comment_stats, ComputeCommentStats.new(octokit.merged_comments))
       expect(pull_request_mailer.print_below_average_stats_message).to eq("2 team member(s) have contributed below average in the past 7 days")
@@ -36,7 +35,6 @@ RSpec.describe PullRequestContributionMailer, type: :mailer do
   end
 
   describe '#print_above_average_stats_message' do
-
     it 'returns the correct message' do
       pull_request_mailer.instance_variable_set(:@comment_stats, ComputeCommentStats.new(octokit.merged_comments))
       expect(pull_request_mailer.print_above_average_stats_message).to eq("1 team member(s) have contributed above average in the past 7 days")
