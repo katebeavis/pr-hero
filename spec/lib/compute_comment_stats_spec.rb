@@ -109,4 +109,62 @@ RSpec.describe 'ComputeCommentStats' do
       end
     end
   end
+
+  describe '#below_avg' do
+    context 'all time' do
+      let(:time_period) { '2016-09-21T23:45:02Z' }
+
+      it 'returns half the average figure' do
+        expect(compute_comment.below_avg(time_period)).to eq(16)
+      end
+    end
+
+    context 'last 7 days' do
+      let(:time_period) { '2016-10-21 12:55:26 +0100' }
+
+      it 'returns half the average figure' do
+        expect(compute_comment.below_avg(time_period)).to eq(4)
+      end
+    end
+  end
+
+  describe '#above_avg' do
+    context 'all time' do
+      let(:time_period) { '2016-09-21T23:45:02Z' }
+
+      it 'returns double the average figure' do
+        expect(compute_comment.above_avg(time_period)).to eq(66)
+      end
+    end
+
+    context 'last 7 days' do
+      let(:time_period) { '2016-10-21 12:55:26 +0100' }
+
+      it 'returns double the average figure' do
+        expect(compute_comment.above_avg(time_period)).to eq(18)
+      end
+    end
+  end
+
+  describe '#below_average_team_members' do
+    let(:user_array) { [["gbkr", 2], ["mottalrd", 15], ["katebeavis", 4], ["TomGroombridge", 8]] }
+    let(:time_period) { '2016-10-21 12:55:26 +0100' }
+    
+    context 'in the past 7 days' do
+      it 'returns a the number of team members who have performed below average' do
+        expect(compute_comment.below_average_team_members(time_period)).to eq(2)
+      end
+    end
+  end
+
+  describe '#above_average_team_members' do
+    let(:user_array) { [["gbkr", 2], ["mottalrd", 20], ["katebeavis", 18], ["TomGroombridge", 8]] }
+    let(:time_period) { '2016-10-21 12:55:26 +0100' }
+    
+    context 'in the past 7 days' do
+      it 'returns a the number of team members who have performed below average' do
+        expect(compute_comment.above_average_team_members(time_period)).to eq(2)
+      end
+    end
+  end
 end

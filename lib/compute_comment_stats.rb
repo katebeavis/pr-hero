@@ -49,8 +49,8 @@ class ComputeCommentStats
 
   def randomise_names(user_array)
     letter = 'A'
-    user_array.each { |array, amount|
-      array.replace(letter)
+    user_array.each { |name, amount|
+      name.replace(letter)
       letter = letter.next
     }
   end
@@ -58,5 +58,23 @@ class ComputeCommentStats
   def avg(time_period)
     values = number_of_prs_contributed_to(time_period).map { |v| v[1] }
     values.inject(:+) / values.count
+  end
+
+  def below_avg(time_period)
+    avg(time_period) / 2
+  end
+
+  def above_avg(time_period)
+    avg(time_period) * 2
+  end
+
+  def below_average_team_members(time_period)
+    user_array = number_of_prs_contributed_to(time_period).map! { |v| v[1] if v[1] <= below_avg(time_period) }.compact
+    user_array.count
+  end
+
+  def above_average_team_members(time_period)
+    user_array = number_of_prs_contributed_to(time_period).map! { |v| v[1] if v[1] >= above_avg(time_period) }.compact
+    user_array.count
   end
 end
