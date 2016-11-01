@@ -54,4 +54,9 @@ class ComputeCommentStats
       letter = letter.next
     }
   end
+
+  def avg(time_period)
+    values = number_of_prs_contributed_to(time_period).map { |v| v[1] }
+    values.inject(:+) / values.count
+  end
 end

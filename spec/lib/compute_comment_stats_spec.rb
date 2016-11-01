@@ -49,7 +49,6 @@ RSpec.describe 'ComputeCommentStats' do
   end
 
   describe '#number_of_prs_contributed_to' do
-
     context 'all time' do
       let(:time_period) { '2016-09-21T23:45:02Z' }
 
@@ -90,6 +89,24 @@ RSpec.describe 'ComputeCommentStats' do
     
     it 'replaces user names with a letter' do
       expect(compute_comment.randomise_names(user_array)).to eq([["A", 29], ["B", 47], ["C", 37], ["D", 21]])
+    end
+  end
+
+  describe '#avg' do
+    context 'all time' do
+      let(:time_period) { '2016-09-21T23:45:02Z' }
+
+      it 'returns the average amount of pull requests contributed to' do
+        expect(compute_comment.avg(time_period)).to eq(33)
+      end
+    end
+
+    context 'last 7 days' do
+      let(:time_period) { '2016-10-21 12:55:26 +0100' }
+
+      it 'returns the average amount of pull requests contributed to' do
+        expect(compute_comment.avg(time_period)).to eq(9)
+      end
     end
   end
 end
