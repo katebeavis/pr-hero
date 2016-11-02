@@ -19,9 +19,9 @@ class WeeklyPrMailer < ApplicationMailer
   end
 
   def message_determiner
-    if @last_week_stats[0] > @two_weeks_ago_stats[0]
+    if @last_week_stats[:avg] > @two_weeks_ago_stats[:avg]
       @message = "You did worse than the previous week"
-    elsif @last_week_stats[0] < @two_weeks_ago_stats[0]
+    elsif @last_week_stats[:avg] < @two_weeks_ago_stats[:avg]
       @message = "You did better than the previous week"
     else
       @message = "You did the same as the previous week"
@@ -29,12 +29,16 @@ class WeeklyPrMailer < ApplicationMailer
   end
 
   def last_week(i)
-    last_week = []
-    last_week.push(@pr_stats.avg[i], @pr_stats.max[i], @pr_stats.min[i])
+    last_week = { avg: @pr_stats.avg[i],
+                  max: @pr_stats.max[i],
+                  min: @pr_stats.min[i]
+                }
   end
 
   def two_weeks_ago(i)
-    two_weeks_ago = []
-    two_weeks_ago.push(@pr_stats.avg[i], @pr_stats.max[i], @pr_stats.min[i])
+    two_weeks_ago = { avg: @pr_stats.avg[i],
+                      max: @pr_stats.max[i],
+                      min: @pr_stats.min[i]
+                    }
   end
 end

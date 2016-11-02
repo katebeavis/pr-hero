@@ -10,24 +10,20 @@ class ComputeCommentStats
     @merged_comments.map { |c| c[:user][:login] }.uniq
   end
 
-  def get_comments_by_user(comment_authors)
-    array = []
-    comment_authors.each do |u|
-      user_array = []
-      @merged_comments.each { |c| user_array << c if c[:user][:login] == u }
-      array << user_array
+  def get_comments_by_user(users)
+    comment_authors.each_with_object([]) do |user, array|
+      array << @merged_comments.each_with_object([]) {
+        |c, user_array| user_array << c if c[:user][:login] == user
+      }
     end
-    array
   end
 
   def number_of_prs_contributed_to(time_period)
-    array = []
-    get_comments_by_user(comment_authors).each do |comments|
+    get_comments_by_user(comment_authors).each_with_object([]) do |comments, array|
       valid_comments = select_comments_based_on_time_period(comments, time_period)
       urls = prepare_url_string(valid_comments)
       array << [comments[0][:user][:login], (valid_comments.count - number_of_duplicate_urls(urls))] if USERS.include? comments[0][:user][:login]
     end
-    array
   end
 
   def anonymised_contribution_data(time_period)

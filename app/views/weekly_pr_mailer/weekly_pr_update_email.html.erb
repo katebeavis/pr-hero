@@ -7,22 +7,22 @@
     <h1>Hi Pioneers</h1>
       <%= @message %>
       <p>
-        Last weeks average pull request lead time was <%= @last_week_stats[0] %> days
+        Last weeks average pull request lead time was <%= @last_week_stats[:avg] %> days
       </p>
       <p>
-        The previous weeks average pull request lead time was <%= @two_weeks_ago_stats[0] %> days
+        The previous weeks average pull request lead time was <%= @two_weeks_ago_stats[:avg] %> days
       </p>
       <p>
-        Last weeks max pull request lead time was <%= @last_week_stats[1] %> days
+        Last weeks max pull request lead time was <%= @last_week_stats[:max] %> days
       </p>
       <p>
-        The previous weeks max pull request lead time was <%= @two_weeks_ago_stats[1] %> days
+        The previous weeks max pull request lead time was <%= @two_weeks_ago_stats[:max] %> days
       </p>
       <p>
-        Last weeks min pull request lead time was <%= @last_week_stats[2] %> days
+        Last weeks min pull request lead time was <%= @last_week_stats[:min] %> days
       </p>
       <p>
-        The previous weeks min pull request lead time was <%= @two_weeks_ago_stats[2] %> days
+        The previous weeks min pull request lead time was <%= @two_weeks_ago_stats[:min] %> days
       </p>
 
   </body>

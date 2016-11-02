@@ -33,22 +33,22 @@ RSpec.describe WeeklyPrMailer, type: :mailer do
   end
 
   describe '#last_week' do
-    it 'returns an array of the average, max and min lead time for the last week pr' do
-      expect(weekly_mailer.last_week(-2)).to eq([2.11, 4.05, 0.05])
+    it 'returns a hash of the average, max and min lead time for the last week pr' do
+      expect(weekly_mailer.last_week(-2)).to eq({:avg=>2.11, :max=>4.05, :min=>0.05})
     end
   end
 
   describe '#two_weeks_ago' do
-    it 'returns an array of the average, max and min lead time for two weeks ago pr' do
-      expect(weekly_mailer.two_weeks_ago(-3)).to eq([4.76, 11.25, 1.81])
+    it 'returns a hash of the average, max and min lead time for two weeks ago pr' do
+      expect(weekly_mailer.two_weeks_ago(-3)).to eq({:avg=>4.76, :max=>11.25, :min=>1.81})
     end
   end
 
   describe '#message_determiner' do
     it 'returns the correct message' do
-      weekly_mailer.instance_variable_set(:@last_week_stats, [4.76, 11.25, 1.81])
-      weekly_mailer.instance_variable_set(:@two_weeks_ago_stats, [2.85, 5.33, 0.87])
-      expect(weekly_mailer.message_determiner).to eq("You did worse than the previous week")
+      weekly_mailer.instance_variable_set(:@last_week_stats, {:avg=>2.11, :max=>4.05, :min=>0.05})
+      weekly_mailer.instance_variable_set(:@two_weeks_ago_stats, {:avg=>4.76, :max=>11.25, :min=>1.81})
+      expect(weekly_mailer.message_determiner).to eq("You did better than the previous week")
     end
   end
 end

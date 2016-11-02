@@ -39,7 +39,7 @@ RSpec.describe 'ComputeCommentStats' do
       expect(compute_comment.get_comments_by_user(users)).to be_a(Array)
     end
 
-    it 'returns an array of comments for each user' do
+    it 'returns a nested array of comments for each user' do
       expect(compute_comment.get_comments_by_user(users).count).to eq(11)
     end
 
@@ -52,7 +52,7 @@ RSpec.describe 'ComputeCommentStats' do
     context 'all time' do
       let(:time_period) { '2016-09-21T23:45:02Z' }
 
-      it 'returns an array of users and number of pr\'s contributed to' do
+      it 'returns a nested array of users and number of pr\'s contributed to' do
         expect(compute_comment.number_of_prs_contributed_to(time_period)).to eq([["gbkr", 29], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]])
       end
     end
@@ -60,7 +60,7 @@ RSpec.describe 'ComputeCommentStats' do
     context 'last 7 days' do
       let(:time_period) { '2016-10-21 12:55:26 +0100' }
 
-      it 'returns an array of users and number of pr\'s contributed to' do
+      it 'returns a nested array of users and number of pr\'s contributed to' do
         expect(compute_comment.number_of_prs_contributed_to(time_period)).to eq([["gbkr", 5], ["mottalrd", 15], ["katebeavis", 8], ["TomGroombridge", 8]])
       end
     end
