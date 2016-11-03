@@ -1,5 +1,5 @@
 class GithubWebhooksController < ApplicationController
-  def index
+  def payload
   end
 
   def show
