@@ -5,12 +5,14 @@ class GithubWebhooksController < ApplicationController
   end
 
   def payload
-    binding.pry
     @event = params
+    self.send_message('Notifications', 'Hello World')
   end
 
   def show
-    @event = params
-    binding.pry
+  end
+
+  def send_message(username, message)
+    @client['3287218'].send(username, message)
   end
 end
