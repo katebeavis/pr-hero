@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :comments, :only => [:index]
   get '/comments' => 'comments#index'
 
-  resource :github_webhooks, :only => [:index, :show]
+  resource :github_webhooks
   get '/github_webhooks' => 'github_webhooks#show'
-  post '/payload' => 'github_webhooks#index'
+  post '/payload' => 'github_webhooks#payload'
 end
