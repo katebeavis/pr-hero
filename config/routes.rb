@@ -8,4 +8,9 @@ Rails.application.routes.draw do
 
   resource :comments, :only => [:index]
   get '/comments' => 'comments#index'
+
+  post '/payload' do
+    push = JSON.parse(request.body.read)
+    puts "I got some JSON: #{push.inspect}"
+  end
 end
