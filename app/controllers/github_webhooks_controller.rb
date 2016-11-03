@@ -1,5 +1,5 @@
 class GithubWebhooksController < ApplicationController
   def index
-    puts "hi"
+    binding.pry
   end
 end
