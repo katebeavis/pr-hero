@@ -19,6 +19,7 @@ class ComputeCommentStats
   end
 
   def number_of_prs_contributed_to(time_period)
+    # this is for a test
     get_comments_by_user(comment_authors).each_with_object([]) do |comments, array|
       valid_comments = select_comments_based_on_time_period(comments, time_period)
       urls = prepare_url_string(valid_comments)
