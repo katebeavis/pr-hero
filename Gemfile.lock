@@ -1,3 +1,10 @@
+PATH
+  remote: /Users/kate.beavis/development/hipchat-rb
+  specs:
+    hipchat (1.5.4)
+      httparty
+      mimemagic
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -92,8 +99,6 @@ GEM
       activesupport (>= 4.1.0)
     hash-deep-merge (0.1.1)
     hashdiff (0.3.0)
-    hipchat (0.5.0)
-      httparty
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
@@ -119,6 +124,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     multi_json (1.12.1)
@@ -269,7 +275,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
-  hipchat
+  hipchat!
   jbuilder (~> 2.5)
   jquery-rails
   launchy
