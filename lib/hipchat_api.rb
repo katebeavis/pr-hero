@@ -1,8 +1,11 @@
 class HipchatApi
 
   def initialize
-    @client = HipChat::Client.new('iWvcW2rz5nVSNuWFszKpmxjvxemWP8qJsGxVv2i1', :api_version => 'v2')
-    @history = @client['3287218'].send('katebeavis', 'Wow I can\'t believe this is working')
+    @client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'], :api_version => 'v2')
+  end
+
+  def send_message(username, message)
+    @client['3287218'].send(username, message)
   end
 
 end
