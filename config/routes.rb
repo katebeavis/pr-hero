@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   resource :comments, :only => [:index]
   get '/comments' => 'comments#index'
 
-  post '/payload' do
-    push = JSON.parse(request.body.read)
-    puts "I got some JSON: #{push.inspect}"
-  end
+  resource :github_webhooks, :only => [:index]
+  post '/payload' => 'github_webhooks#index'
 end
