@@ -4,9 +4,8 @@ class GithubWebhooksController < ApplicationController
 
   def payload
     @client = HipchatApi.new
-    @event = params
-    binding.pry
-    state = @event[:github_webhook][:action]
+    @event = params[:github_webhook]
+    state = @event[:action]
     user = @event[:pull_request][:user][:login]
     link = @event[:pull_request][:html_url]
     if state == 'opened' || state == 'reopened'
