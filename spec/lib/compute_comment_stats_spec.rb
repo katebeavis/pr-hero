@@ -165,4 +165,16 @@ RSpec.describe 'ComputeCommentStats' do
       end
     end
   end
+
+  describe '#comments_made_by_user' do
+    let(:time_period) { '2016-10-21 12:55:26 +0100' }
+
+    it 'returns an array of users and the number of comments created in the past week' do
+      expect(compute_comment.comments_made_by_user(time_period)).to eq([["gbkr", 8], ["mottalrd", 91], ["katebeavis", 28], ["TomGroombridge", 17]])
+    end
+
+    it 'returns the correct number of comments created in the past week by a user' do
+      expect(compute_comment.comments_made_by_user(time_period)[0][1]).to eq(8)
+    end
+  end
 end

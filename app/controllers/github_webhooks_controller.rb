@@ -1,17 +1,24 @@
 require 'hipchat_api'
+require 'octokit_api'
+require 'compute_comment_stats'
+require 'recommended_reviewer'
 
 class GithubWebhooksController < ApplicationController
 
   def payload
-    @client = HipchatApi.new
-    @event = params
-    state = @event[:github_webhook][:action]
+    client = HipchatApi.new
+    octokit = OctokitApi.new
+    merged_comments = octokit.merged_comments
+    comment_stats = ComputeCommentStats.new(merged_comments)
+    @recommended_reviewer = RecommendedReviewer.new(comment_stats)
+    username = @recommended_reviewer.hipchat_username
+    @event = params[:github_webhook]
+    state = @event[:action]
     user = @event[:pull_request][:user][:login]
     link = @event[:pull_request][:html_url]
-    if state = 'opened'
-      binding.pry
-      @client.send_message("Notifications", "Pull request #{state} by #{user} <a href=#{link}>#{link}</a>")
-      @client.send_message("Notifications", "@KateBeavis should take a look", :message_format => "text")
+    if state == 'opened' || state == 'reopened'
+      client.send_message("Notifications", "Pull request #{state} by #{user} <a href=#{link}>#{link}</a>")
+      client.send_message("Notifications", "#{username} please take a look at this pull request", :message_format => "text")
     end
   end
 
