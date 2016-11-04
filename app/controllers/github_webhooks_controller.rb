@@ -21,12 +21,16 @@ class GithubWebhooksController < ApplicationController
     # username = @recommended_reviewer.hipchat_username
     @event = params[:github_webhook]
     state = @event[:action]
+    binding.pry
     # user = @event[:pull_request][:user][:login]
     # link = @event[:pull_request][:html_url]
     options = { user: @event[:pull_request][:user][:login],
                 link: @event[:pull_request][:html_url],
                 user: @event[:pull_request][:user][:login],
-                username: @recommended_reviewer.hipchat_username
+                username: @recommended_reviewer.hipchat_username,
+                merged_at: @event[:pull_request][:merged_at],
+                merged_by: @event[:pull_request][:merged_by][:login],
+                title: @event[:pull_request][:title]
               }
     @client.message_determiner(state, options)
   end
