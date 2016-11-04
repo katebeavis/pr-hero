@@ -1,10 +1,11 @@
 require 'rails_helper'
 require 'compute_comment_stats'
 require 'octokit_api'
+require 'recommended_reviewer'
 
 RSpec.describe 'ComputeCommentStats' do
   let(:octokit) { OctokitApi.new }
-  let(:compute_comment) { ComputeCommentStats.new(octokit.merged_comments,) }
+  let(:compute_comment) { ComputeCommentStats.new(octokit.merged_comments) }
   let(:users) { compute_comment.comment_authors }
 
   before do
@@ -48,20 +49,39 @@ RSpec.describe 'ComputeCommentStats' do
     end
   end
 
-  describe '#number_of_prs_contributed_to' do
-    context 'all time' do
-      let(:time_period) { '2016-09-21T23:45:02Z' }
+  describe '#comments_made_by_user' do
 
-      it 'returns a nested array of users and number of pr\'s contributed to' do
-        expect(compute_comment.number_of_prs_contributed_to(time_period)).to eq([["gbkr", 29], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]])
+    context 'duplicate comments removed' do
+
+      context 'all time' do
+        let(:time_period) { '2016-09-21T23:45:02Z' }
+        let(:remove_duplicates) { true }
+
+        it 'returns a nested array of users and number of pr\'s contributed to' do
+          expect(compute_comment.comments_made_by_user(time_period, remove_duplicates)).to eq([["gbkr", 29], ["mottalrd", 47], ["katebeavis", 37], ["TomGroombridge", 21]])
+        end
+      end
+
+      context 'last 7 days' do
+        let(:time_period) { '2016-10-21 12:55:26 +0100' }
+        let(:remove_duplicates) { true }
+
+        it 'returns a nested array of users and number of pr\'s contributed to' do
+          expect(compute_comment.comments_made_by_user(time_period, remove_duplicates)).to eq([["gbkr", 5], ["mottalrd", 15], ["katebeavis", 8], ["TomGroombridge", 8]])
+        end
       end
     end
 
-    context 'last 7 days' do
+    context 'duplicate comments kept' do
       let(:time_period) { '2016-10-21 12:55:26 +0100' }
+      let(:remove_duplicates) { false }
 
-      it 'returns a nested array of users and number of pr\'s contributed to' do
-        expect(compute_comment.number_of_prs_contributed_to(time_period)).to eq([["gbkr", 5], ["mottalrd", 15], ["katebeavis", 8], ["TomGroombridge", 8]])
+      it 'returns an array of users and the number of comments created in the past week' do
+        expect(compute_comment.comments_made_by_user(time_period, remove_duplicates)).to eq([["gbkr", 8], ["mottalrd", 91], ["katebeavis", 28], ["TomGroombridge", 17]])
+      end
+
+      it 'returns the correct number of comments created in the past week by a user' do
+        expect(compute_comment.comments_made_by_user(time_period, remove_duplicates)[0][1]).to eq(8)
       end
     end
   end
@@ -163,18 +183,6 @@ RSpec.describe 'ComputeCommentStats' do
       it 'returns a the number of team members who have performed below average' do
         expect(compute_comment.above_average_team_members(time_period)).to eq(0)
       end
-    end
-  end
-
-  describe '#comments_made_by_user' do
-    let(:time_period) { '2016-10-21 12:55:26 +0100' }
-
-    it 'returns an array of users and the number of comments created in the past week' do
-      expect(compute_comment.comments_made_by_user(time_period)).to eq([["gbkr", 8], ["mottalrd", 91], ["katebeavis", 28], ["TomGroombridge", 17]])
-    end
-
-    it 'returns the correct number of comments created in the past week by a user' do
-      expect(compute_comment.comments_made_by_user(time_period)[0][1]).to eq(8)
     end
   end
 end

@@ -6,6 +6,13 @@ RSpec.describe GithubWebhooksController, type: :controller do
   describe '#payload' do
     render_views
 
+    before do
+      VCR.insert_cassette('github_payload')
+    end
+    after do
+      VCR.eject_cassette
+    end
+
     let(:params) do
       { "github_webhook": {
           "action": "opened",

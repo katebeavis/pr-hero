@@ -5054,7 +5054,7 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - token bc0250c339c4bcceeb82cc8e6e1615c77ab2ddd7
+      - token 1234
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:

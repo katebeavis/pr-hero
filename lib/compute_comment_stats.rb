@@ -18,16 +18,21 @@ class ComputeCommentStats
     end
   end
 
-  def number_of_prs_contributed_to(time_period)
+  def comments_made_by_user(time_period, remove_duplicates)
     get_comments_by_user(comment_authors).each_with_object([]) do |comments, array|
-      valid_comments = select_comments_based_on_time_period(comments, time_period)
-      urls = prepare_url_string(valid_comments)
-      array << [comments[0][:user][:login], (valid_comments.count - number_of_duplicate_urls(urls))] if USERS.include? comments[0][:user][:login]
+      comments_by_time_period = select_comments_based_on_time_period(comments, time_period)
+      comment_count = remove_duplicates ? remove_duplicate_comments(comments_by_time_period) : comments_by_time_period.count
+      array << [comments[0][:user][:login], comment_count] if USERS.include? comments[0][:user][:login]
     end
   end
 
+  def remove_duplicate_comments(comments_by_time_period)
+    urls = prepare_url_string(comments_by_time_period)
+    comments_by_time_period.count - number_of_duplicate_urls(urls)
+  end
+
   def anonymised_contribution_data(time_period)
-    randomise_names(number_of_prs_contributed_to(time_period))
+    randomise_names(comments_made_by_user(time_period, true))
   end
 
   def select_comments_based_on_time_period(comments, time_period)
@@ -52,7 +57,7 @@ class ComputeCommentStats
   end
 
   def avg(time_period)
-    values = number_of_prs_contributed_to(time_period).map { |v| v[1] }
+    values = comments_made_by_user(time_period, true).map { |v| v[1] }
     values.inject(:+) / values.count
   end
 
@@ -65,19 +70,12 @@ class ComputeCommentStats
   end
 
   def below_average_team_members(time_period)
-    user_array = number_of_prs_contributed_to(time_period).map! { |v| v[1] if v[1] <= below_avg(time_period) }.compact
+    user_array = comments_made_by_user(time_period, true).map! { |v| v[1] if v[1] <= below_avg(time_period) }.compact
     user_array.count
   end
 
   def above_average_team_members(time_period)
-    user_array = number_of_prs_contributed_to(time_period).map! { |v| v[1] if v[1] >= above_avg(time_period) }.compact
+    user_array = comments_made_by_user(time_period, true).map! { |v| v[1] if v[1] >= above_avg(time_period) }.compact
     user_array.count
-  end
-
-  def comments_made_by_user(time_period)
-    get_comments_by_user(comment_authors).each_with_object([]) do |comments, array|
-      valid_comments = select_comments_based_on_time_period(comments, time_period)
-      array << [comments[0][:user][:login], valid_comments.count] if USERS.include? comments[0][:user][:login]
-    end
   end
 end

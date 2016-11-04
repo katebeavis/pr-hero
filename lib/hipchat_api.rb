@@ -8,4 +8,24 @@ class HipchatApi
     @client['3287218'].send(username, message, options)
   end
 
+  def message_determiner(state, options = {})
+    case state
+    when "opened"
+      open_pull_request(state, options)
+    when "reopened"
+      open_pull_request(state, options)
+    when "merged"
+      merged_pull_request(state, options)
+    end
+  end
+
+  def open_pull_request(state, options)
+    self.send_message("Notifications", "Pull request #{state} by #{options[:user]} <a href=#{options[:link]}>#{options[:link]}</a>")
+    #self.send_message("Notifications", "#{options[:username]} please take a look at this pull request", :message_format => "text")
+  end
+
+  def merged_pull_request(state, options)
+    self.send_message("Notifications", "Pull request #{state} by #{options[:user]} <a href=#{options[:link]}>#{options[:link]}</a>")
+  end
+
 end

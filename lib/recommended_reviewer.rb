@@ -5,7 +5,7 @@ class RecommendedReviewer
   end
 
   def get_recommended_reviewer
-    @comment_stats.comments_made_by_user(7.days.ago).min_by{|k,v| v}[0]
+    @comment_stats.comments_made_by_user(7.days.ago, false).min_by{|k,v| v}[0]
   end
 
   def hipchat_username
