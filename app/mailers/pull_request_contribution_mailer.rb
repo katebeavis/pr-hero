@@ -4,10 +4,11 @@ require 'compute_comment_stats'
 class PullRequestContributionMailer < ApplicationMailer
   default from: "katebeavis84@gmail.com"
 
+
   def pull_request_contribution_email
     client = OctokitApi.new
-    @merged_comments = client.merged_comments
-    @comment_stats = ComputeCommentStats.new(@merged_comments)
+    merged_comments = client.merged_comments
+    @comment_stats = ComputeCommentStats.new(merged_comments)
     @below_average_message = print_below_average_stats_message
     @above_average_message = print_above_average_stats_message
     mail(to: "katebeavis84@gmail.com", subject: "Pull request contributions per team member")
