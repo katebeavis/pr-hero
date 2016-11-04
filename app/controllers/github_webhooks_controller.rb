@@ -27,6 +27,7 @@ class GithubWebhooksController < ApplicationController
                 merged_at: @event.dig(:pull_request, :merged_at),
                 title: @event[:pull_request][:title]
               }
+    binding.pry
     @client.message_determiner(state, options)
   end
 

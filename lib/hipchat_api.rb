@@ -14,7 +14,7 @@ class HipchatApi
       open_pull_request(state, options)
     when "reopened"
       open_pull_request(state, options)
-    when "closed" && merged_at.present?
+    when "closed" && option[:merged_at].present?
       merged_pull_request(state, options)
     end
   end
