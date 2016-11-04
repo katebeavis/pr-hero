@@ -18,15 +18,14 @@ class GithubWebhooksController < ApplicationController
   end
 
   def convert_payload
-    # username = @recommended_reviewer.hipchat_username
     @event = params[:github_webhook]
     state = @event[:action]
-    # user = @event[:pull_request][:user][:login]
-    # link = @event[:pull_request][:html_url]
     options = { user: @event[:pull_request][:user][:login],
                 link: @event[:pull_request][:html_url],
                 user: @event[:pull_request][:user][:login],
-                username: @recommended_reviewer.hipchat_username
+                username: @recommended_reviewer.hipchat_username,
+                merged_at: @event.dig(:pull_request, :merged_at),
+                title: @event[:pull_request][:title]
               }
     @client.message_determiner(state, options)
   end
