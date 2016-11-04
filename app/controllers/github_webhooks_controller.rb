@@ -25,6 +25,7 @@ class GithubWebhooksController < ApplicationController
                 user: @event[:pull_request][:user][:login],
                 username: @recommended_reviewer.hipchat_username,
                 merged_at: @event.dig(:pull_request, :merged_at),
+                merged_by: @event.dig(:pull_request, :merged_by, :login),
                 title: @event[:pull_request][:title]
               }
     binding.pry
