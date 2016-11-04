@@ -9,13 +9,13 @@ class HipchatApi
   end
 
   def message_determiner(state, options = {})
-    binding.pry
     case state
     when "opened"
       open_pull_request(state, options)
     when "reopened"
       open_pull_request(state, options)
     when "closed" && options[:merged_at].present?
+      binding.pry
       merged_pull_request(state, options)
     end
   end
@@ -26,6 +26,7 @@ class HipchatApi
   end
 
   def merged_pull_request(state, options)
+    binding.pry
     self.send_message("Notifications", "#{options[:title]} merged by #{options[:merged_by]} <a href=#{options[:link]}>#{options[:link]}</a>")
   end
 
