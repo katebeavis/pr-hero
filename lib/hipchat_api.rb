@@ -9,6 +9,7 @@ class HipchatApi
   end
 
   def message_determiner(state, options = {})
+    binding.pry
     case state
     when "opened"
       open_pull_request(state, options)
