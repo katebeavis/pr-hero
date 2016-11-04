@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'hipchat_api'
 
 RSpec.describe GithubWebhooksController, type: :controller do
-  let(:hipchat) { HipchatApi.new }
 
   describe '#payload' do
     render_views
@@ -64,7 +63,7 @@ RSpec.describe GithubWebhooksController, type: :controller do
       before do
         params[:github_webhook][:action] = 'reopened'
       end
-      
+
       it 'sends a message' do
         expect_any_instance_of(HipchatApi).to receive(:send_message).twice
 

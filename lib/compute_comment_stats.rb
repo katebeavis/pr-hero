@@ -73,4 +73,11 @@ class ComputeCommentStats
     user_array = number_of_prs_contributed_to(time_period).map! { |v| v[1] if v[1] >= above_avg(time_period) }.compact
     user_array.count
   end
+
+  def comments_made_by_user(time_period)
+    get_comments_by_user(comment_authors).each_with_object([]) do |comments, array|
+      valid_comments = select_comments_based_on_time_period(comments, time_period)
+      array << [comments[0][:user][:login], valid_comments.count] if USERS.include? comments[0][:user][:login]
+    end
+  end
 end
