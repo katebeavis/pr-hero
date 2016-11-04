@@ -18,7 +18,7 @@ class GithubWebhooksController < ApplicationController
     link = @event[:pull_request][:html_url]
     if state == 'opened' || state == 'reopened'
       client.send_message("Notifications", "Pull request #{state} by #{user} <a href=#{link}>#{link}</a>")
-      client.send_message("Notifications", "#{username} should take a look", :message_format => "text")
+      client.send_message("Notifications", "#{username} please take a look at this pull request", :message_format => "text")
     end
   end
 
