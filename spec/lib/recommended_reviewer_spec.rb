@@ -23,7 +23,6 @@ RSpec.describe 'RecommendedReviewer' do
 
   describe '#get_recommended_reviewer' do
     it 'returns the name of the user that has made the fewest comments in the past week' do
-      binding.pry
       expect(recommended_reviewer.get_recommended_reviewer).to eq("katebeavis")
     end
   end
