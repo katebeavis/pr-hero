@@ -17,13 +17,12 @@ class HipchatApi
   end
 
   def open_pull_request(state, options)
-    self.send_message("Notifications", "Pull request #{state} by #{options[:user]} <a href=#{options[:link]}>#{options[:link]}</a>")
+    self.send_message("Notifications", "Pull request #{state} by <b>#{options[:user]}</b> <a href=#{options[:link]}>#{options[:link]}</a>")
     #self.send_message("Notifications", "#{options[:username]} please take a look at this pull request", :message_format => "text")
   end
 
   def merged_pull_request(state, options)
-    binding.pry
-    self.send_message("Notifications", "#{options[:title]} merged by #{options[:merged_by]} <a href=#{options[:link]}>#{options[:link]}</a>")
+    self.send_message("Notifications", "<b>#{options[:title]}</b> merged by <b>#{options[:merged_by]}</b> <a href=#{options[:link]}>#{options[:link]}</a>")
   end
 
 end
