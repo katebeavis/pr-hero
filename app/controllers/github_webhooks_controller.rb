@@ -28,7 +28,7 @@ class GithubWebhooksController < ApplicationController
                 merged_by: @event.dig(:pull_request, :merged_by, :login),
                 title: @event[:pull_request][:title]
               }
-    @client.message_determiner(state, options)
+    @client.determine_hipchat_message(state, options)
   end
 
 end

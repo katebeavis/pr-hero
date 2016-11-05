@@ -18,4 +18,59 @@ RSpec.describe 'HipchatApi' do
       hipchat.send_message('Notifications', 'Wow!')
     end
   end
+
+  describe '#determine_hipchat_message' do
+    context 'opened pull request' do
+      let(:state) { "opened" }
+      let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"", :merged_by=>nil, :title=>"fix issue with pr state"} }
+      
+      it 'calls the open pull request method' do
+        expect(hipchat).to receive(:open_pull_request).with(state, options).once
+
+        hipchat.determine_hipchat_message(state, options)
+      end
+    end
+
+    context 'merged pull request' do
+      let(:state) { "closed" }
+      let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"2016-11-05T00:29:11Z", :merged_by=>"katebeavis", :title=>"fix issue with pr state"} }
+      
+      it 'calls the merged pull request method' do
+        expect(hipchat).to receive(:merged_pull_request).with(state, options).once
+
+        hipchat.determine_hipchat_message(state, options)
+      end
+    end
+
+    context 'closed pull request' do
+      let(:state) { "closed" }
+      let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"", :merged_by=>nil, :title=>"fix issue with pr state"} }
+      
+      it 'does nothing' do
+        expect(hipchat.determine_hipchat_message(state, options)).to eq(nil)
+      end
+    end
+  end
+
+  describe '#open_pull_request' do
+    let(:state) { "opened" }
+    let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"", :merged_by=>nil, :title=>"fix issue with pr state"} }
+
+    it 'calls the send message method' do
+      expect(hipchat).to receive(:send_message).with("Notifications", "Pull request opened by <b>katebeavis</b> <a href=https://github.com/katebeavis/pr-hero/pull/10>https://github.com/katebeavis/pr-hero/pull/10</a>", {:color=>"purple"})
+
+      hipchat.open_pull_request(state, options)
+    end
+  end
+
+  describe '#merged_pull_request' do
+    let(:state) { "closed" }
+    let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"2016-11-05T00:29:11Z", :merged_by=>"katebeavis", :title=>"fix issue with pr state"} }
+
+    it 'calls the send message method' do
+      expect(hipchat).to receive(:send_message).with("Notifications", "Pull request closed by <b>katebeavis</b> <a href=https://github.com/katebeavis/pr-hero/pull/10>https://github.com/katebeavis/pr-hero/pull/10</a>", {:color=>"purple"})
+
+      hipchat.open_pull_request(state, options)
+    end
+  end
 end

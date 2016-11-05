@@ -8,7 +8,7 @@ class HipchatApi
     @client['3287218'].send(username, message, options)
   end
 
-  def message_determiner(state, options = {})
+  def determine_hipchat_message(state, options = {})
     if state == "opened" || state == 'reopened'
       open_pull_request(state, options)
     elsif state == 'closed' && options[:merged_at].present?
