@@ -9,13 +9,9 @@ class HipchatApi
   end
 
   def message_determiner(state, options = {})
-    case state
-    when "opened"
+    if state == "opened" || state == 'reopened'
       open_pull_request(state, options)
-    when "reopened"
-      open_pull_request(state, options)
-    when options[:merged_at].present?
-      binding.pry
+    elsif state == 'closed' && options[:merged_at].present?
       merged_pull_request(state, options)
     end
   end
