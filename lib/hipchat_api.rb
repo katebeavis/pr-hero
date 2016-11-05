@@ -22,7 +22,7 @@ class HipchatApi
   end
 
   def merged_pull_request(state, options)
-    self.send_message("Notifications", "<b>#{options[:title]}</b> merged by <b>#{options[:merged_by]}</b> <a href=#{options[:link]}>#{options[:link]}</a>", :color => 'purple')
+    self.send_message("Notifications", "<b>#{options[:title]}</b> merged by <b>#{options[:merged_by]}</b> <a href=#{options[:link]}>#{options[:link]}</a>", :color => 'green')
   end
 
 end
