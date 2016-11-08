@@ -57,8 +57,8 @@ RSpec.describe 'HipchatApi' do
     let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"", :merged_by=>nil, :title=>"fix issue with pr state"} }
 
     it 'calls the send message method' do
-      expect(hipchat).to receive(:send_message).with("Notifications", "Pull request opened by <b>katebeavis</b> <a href=https://github.com/katebeavis/pr-hero/pull/10>https://github.com/katebeavis/pr-hero/pull/10</a>", {:color=>"purple"})
-
+      expect(hipchat).to receive(:send_message).with("Notifications", "Pull request opened by <b>katebeavis</b> <a href=https://github.com/katebeavis/pr-hero/pull/10>https://github.com/katebeavis/pr-hero/pull/10</a>")
+      expect(hipchat).to receive(:send_message).with("Notifications", "@TomGroombridge please take a look at this pull request", {:message_format=>"text"})
       hipchat.open_pull_request(state, options)
     end
   end
@@ -68,9 +68,9 @@ RSpec.describe 'HipchatApi' do
     let(:options) { {:user=>"katebeavis", :link=>"https://github.com/katebeavis/pr-hero/pull/10", :username=>"@TomGroombridge", :merged_at=>"2016-11-05T00:29:11Z", :merged_by=>"katebeavis", :title=>"fix issue with pr state"} }
 
     it 'calls the send message method' do
-      expect(hipchat).to receive(:send_message).with("Notifications", "Pull request closed by <b>katebeavis</b> <a href=https://github.com/katebeavis/pr-hero/pull/10>https://github.com/katebeavis/pr-hero/pull/10</a>", {:color=>"purple"})
+      expect(hipchat).to receive(:send_message).with("Notifications", "<b>fix issue with pr state</b> merged by <b>katebeavis</b> <a href=https://github.com/katebeavis/pr-hero/pull/10>https://github.com/katebeavis/pr-hero/pull/10</a>", {:color=>"green"})
 
-      hipchat.open_pull_request(state, options)
+      hipchat.merged_pull_request(state, options)
     end
   end
 end
