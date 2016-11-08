@@ -18,15 +18,15 @@ class GithubWebhooksController < ApplicationController
   end
 
   def convert_payload
-    @event = params[:github_webhook]
-    state = @event[:action]
-    options = { user: @event[:pull_request][:user][:login],
-                link: @event[:pull_request][:html_url],
-                user: @event[:pull_request][:user][:login],
+    event = params[:github_webhook]
+    state = event[:action]
+    options = { user: event[:pull_request][:user][:login],
+                link: event[:pull_request][:html_url],
+                user: event[:pull_request][:user][:login],
                 username: @recommended_reviewer.hipchat_username,
-                merged_at: @event.dig(:pull_request, :merged_at),
-                merged_by: @event.dig(:pull_request, :merged_by, :login),
-                title: @event[:pull_request][:title]
+                merged_at: event.dig(:pull_request, :merged_at),
+                merged_by: event.dig(:pull_request, :merged_by, :login),
+                title: event[:pull_request][:title]
               }
     @client.determine_hipchat_message(state, options)
   end
