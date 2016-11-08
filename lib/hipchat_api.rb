@@ -18,7 +18,7 @@ class HipchatApi
 
   def open_pull_request(state, options)
     self.send_message("Notifications", "Pull request #{state} by <b>#{options[:user]}</b> <a href=#{options[:link]}>#{options[:link]}</a>", :color => 'purple')
-    #self.send_message("Notifications", "#{options[:username]} please take a look at this pull request", :message_format => "text")
+    self.send_message("Notifications", "#{options[:username]} please take a look at this pull request", :message_format => "text")
   end
 
   def merged_pull_request(state, options)
