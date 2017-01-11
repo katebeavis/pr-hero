@@ -54,6 +54,12 @@ def pull_requests(state='closed', repo='rails/rails')
 end
 ```
 
+Add the users you want to track PR contributions from:
+
+In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` constant
+
+``USERS = ['dhh', 'tenderlove', 'skmetz', 'avdi']``
+
 ## To do
 
 - PR Hero has verrrrry basic styling at the moment, and no there is no UX, it is very functional so I would like to make it a better experience to use
