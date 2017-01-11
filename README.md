@@ -33,3 +33,5 @@ Using webhooks, whenever a PR is opened or merged, a message will be posted in a
 - PR Hero has verrrrry basic styling at the moment, and no there is no UX, it is very functional so I would like to make it a better experience to use
 
 - I would like to make it easier to input/change the repo that data is being pulled from. At the moment you have to change it in the code
+
+- The email functionality doesn't always work as it should, this needs to be improved
