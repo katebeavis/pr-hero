@@ -26,7 +26,7 @@ Using webhooks, whenever a PR is opened or merged, a message will be posted in a
 
 ![HipChat notifications](/app/assets/images/hipchat_notifications.png?raw=true)
 
-## To run
+## To setup
 
 ``bundle install``
 
@@ -59,6 +59,14 @@ Add the users you want to track PR contributions from:
 In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` constant
 
 ``USERS = ['dhh', 'tenderlove', 'skmetz', 'avdi']``
+
+## To run
+
+Fire up your server:
+
+``$ rails s``
+
+Visit ``http://localhost:3000/`` and you're good to go! :tada:
 
 ## To do
 
