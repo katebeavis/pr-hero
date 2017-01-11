@@ -56,7 +56,7 @@ end
 
 Add the users you want to track PR contributions from:
 
-In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` constant
+In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` constant, e.g:
 
 ``USERS = ['dhh', 'tenderlove', 'skmetz', 'avdi']``
 
