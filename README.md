@@ -1,6 +1,6 @@
 # PR Hero
 
-An app to help keep track of PR's, utilising the Github API with Octokit, webhooks & the Hipchat API
+An app to help keep track of PR's, utilising the Github API with Octokit, webhooks & the HipChat API
 
 ## PR Hero does 3 things:
 
@@ -16,9 +16,11 @@ To help gain an understanding of a teams productivity, a bar chart displays the 
 
 ![PR's contributed to](/app/assets/images/contributed_to.png?raw=true)
 
-### 3)  Hipchat notifications
+### 3)  HipChat notifications
 
-Using webhooks, whenever a PR is opened or merged, a message will be posted in a Hipchat room. When a PR is opened, the app will make a recommendation on who should review it, based on number of PR's contributed to in the last 7 days
+Using webhooks, whenever a PR is opened or merged, a message will be posted in a HipChat room. When a PR is opened, the app will make a recommendation on who should review it, based on number of PR's contributed to in the last 7 days
+
+![HipChat notifications](/app/assets/images/hipchat_notifications.png?raw=true)
 
 ## To run
 
