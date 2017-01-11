@@ -39,7 +39,8 @@ gmail_password: "EMAIL_PASSWORD"
 HIPCHAT_TOKEN=YOUR_HIPCHAT_TOKEN
 ```
 
-https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+Github docs: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+Hipchat docs: https://www.hipchat.com/docs/apiv2/method/generate_token
 
 ## To do
 
