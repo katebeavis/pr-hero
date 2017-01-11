@@ -8,6 +8,8 @@ An app to help keep track of PR's, utilising the Github API with Octokit, webhoo
 
 Shows the average, maximum & minimum lead time for PR's for a given repo on a weekly basis. This data is displayed on a line graph, using Highcharts
 
+![Alt text](/app/assets/images/lead_time.jpg?raw=true "Optional Title")
+
 ### 2) Number of PR's contributed to per team member
 
 To help gain an understanding of a teams productivity, a bar chart displays the number of PR's contributed to per team member, both all time and in the last 7 days. Team member names are obscured
