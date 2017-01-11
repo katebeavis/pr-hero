@@ -32,15 +32,14 @@ Using webhooks, whenever a PR is opened or merged, a message will be posted in a
 
 Add an .env file with the following credentials:
 
-``GITHUB_TOKEN=YOUR_GITHUB_TOKEN``
+```
+GITHUB_TOKEN=YOUR_GITHUB_TOKEN
+gmail_username: "EMAIL_ADDRESS"
+gmail_password: "EMAIL_PASSWORD"
+HIPCHAT_TOKEN=YOUR_HIPCHAT_TOKEN
+```
 
 https://help.github.com/articles/creating-an-access-token-for-command-line-use/
-
-``gmail_username: "EMAIL_ADDRESS"``
-
-``gmail_password: "EMAIL_PASSWORD"``
-
-``HIPCHAT_TOKEN=YOUR_HIPCHAT_TOKEN``
 
 ## To do
 
