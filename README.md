@@ -43,6 +43,17 @@ Github docs: https://help.github.com/articles/creating-an-access-token-for-comma
 
 Hipchat docs: https://www.hipchat.com/docs/apiv2/method/generate_token
 
+Add your repo:
+
+In ``/lib/octokit_api.rb`` set any repo arguments to the repo you want to use, e.g:
+
+```
+def pull_requests(state='closed', repo='rails/rails')
+  @client.auto_paginate = true
+  @client.issues repo, state: state
+end
+```
+
 ## To do
 
 - PR Hero has verrrrry basic styling at the moment, and no there is no UX, it is very functional so I would like to make it a better experience to use
