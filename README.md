@@ -18,7 +18,7 @@ To help gain an understanding of a teams productivity, a bar chart displays the 
 
 ### 3)  HipChat notifications
 
-Using webhooks, whenever a PR is opened or merged, a message will be posted in a HipChat room. When a PR is opened, the app will make a recommendation on who should review it, based on number of PR's contributed to in the last 7 days
+Using webhooks, whenever a PR is opened or merged, a message will be posted in a HipChat room. When a PR is opened, the app will make a recommendation on who should review it, based on number of PR's contributed to in the last 7 days, and notify that person
 
 ![HipChat notifications](/app/assets/images/hipchat_notifications.png?raw=true)
 
