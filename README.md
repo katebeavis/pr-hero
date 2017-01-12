@@ -41,7 +41,7 @@ HIPCHAT_TOKEN=YOUR_HIPCHAT_TOKEN
 
 Github docs: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
 
-Hipchat docs: https://www.hipchat.com/docs/apiv2/method/generate_token
+HipChat: See below
 
 Add your repo:
 
@@ -59,6 +59,24 @@ Add the users you want to track PR contributions from:
 In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` constant, e.g:
 
 ``USERS = ['dhh', 'tenderlove', 'skmetz', 'avdi']``
+
+Add the HipChat room you want to send notifications to:
+
+Go to your rooms: (You need to be room admin)
+
+https://zopa.hipchat.com/rooms?t=mine
+
+Click on the room > Tokens and then create one with scopes ``Send notification`` and ``View room``
+
+Find your unique room identifier (under ``API ID`` on your rooms summary tab)
+
+In ``/lib/hipchat_api.rb`` add to it the ``send_message`` method, e.g, if your identifier was 123456:
+
+```
+def send_message(username, message, options = {})
+  @client['123456'].send(username, message, options)
+end
+```
 
 ## To run
 
