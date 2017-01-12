@@ -62,7 +62,9 @@ In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` c
 
 ### Add a webhook
 
-Go to settings > Webhooks and under ``Payload URL`` add ``http://YOUR_WEB_ADDRESS/payload``
+(If you are doing this with your own repo)
+
+In the repo you are running this from, go to settings > Webhooks and under ``Payload URL`` add ``http://YOUR_WEB_ADDRESS/payload``
 
 It can't be ``localhost`` so I would recommend using ngrok https://ngrok.com/
 
