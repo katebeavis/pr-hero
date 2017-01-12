@@ -88,8 +88,10 @@ Visit ``http://localhost:3000/`` and you're good to go! :tada:
 
 ## To do
 
-- PR Hero has verrrrry basic styling at the moment, and no there is no UX, it is very functional so I would like to make it a better experience to use
+- PR Hero has very basic styling at the moment, and no there is no UX, it is very functional so this needs to be improved
 
-- I would like to make it easier to input/change the repo that data is being pulled from. At the moment you have to change it in the code
+- To change the repo that data is being pulled from, you have to change it in the code. Next step is to add a front end interface where you can add/change the repo
 
 - The email functionality doesn't always work as it should, this needs to be improved
+
+- Extract all unique identifiers (room token, team member names, etc) into the .env file
