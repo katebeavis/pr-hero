@@ -94,7 +94,7 @@ Fire up your server:
 
 Visit ``http://localhost:3000/`` and you're good to go! :tada:
 
-## To run tests
+## To run tests :vertical_traffic_light:
 
 ``$ rspec`` and :boom: (in a good way)
 
