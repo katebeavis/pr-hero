@@ -43,7 +43,7 @@ Github docs: https://help.github.com/articles/creating-an-access-token-for-comma
 
 HipChat: See below
 
-Add your repo:
+### Add your repo:
 
 In ``/lib/octokit_api.rb`` set any repo arguments to the repo you want to use, e.g:
 
@@ -54,13 +54,13 @@ def pull_requests(state='closed', repo='rails/rails')
 end
 ```
 
-Add the users you want to track PR contributions from:
+### Add the users you want to track PR contributions from:
 
 In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` constant, e.g:
 
 ``USERS = ['dhh', 'tenderlove', 'skmetz', 'avdi']``
 
-Add the HipChat room you want to send notifications to:
+### Add the HipChat room you want to send notifications to:
 
 Go to your rooms: (You need to be room admin)
 
