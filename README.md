@@ -60,6 +60,14 @@ In ``/lib/compute_comment_stats.rb`` add the Github usernames to the ``USERS`` c
 
 ``USERS = ['dhh', 'tenderlove', 'skmetz', 'avdi']``
 
+### Add a webhook
+
+Go to settings > Webhooks and under ``Payload URL`` add ``http://YOUR_WEB_ADDRESS/payload``
+
+It can't be ``localhost`` so I would recommend using ngrok https://ngrok.com/
+
+Select 'Let me choose individual events' and then 'Issues' and 'Pull Request'
+
 ### Add the HipChat room you want to send notifications to:
 
 Go to your rooms: (You need to be room admin)
