@@ -88,7 +88,7 @@ Visit ``http://localhost:3000/`` and you're good to go! :tada:
 
 ## To do
 
-- PR Hero has very basic styling at the moment, and no there is no UX, it is very functional so this needs to be improved
+- PR Hero has very basic styling at the moment, and there is no UX, it is very functional so this needs to be improved
 
 - To change the repo that data is being pulled from, you have to change it in the code. Next step is to add a front end interface where you can add/change the repo
 
