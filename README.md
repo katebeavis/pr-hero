@@ -94,6 +94,10 @@ Fire up your server:
 
 Visit ``http://localhost:3000/`` and you're good to go! :tada:
 
+## To run tests :vertical_traffic_light:
+
+``$ rspec`` and :boom: (in a good way)
+
 ## To do
 
 - PR Hero has very basic styling at the moment, and there is no UX, it is very functional so this needs to be improved
