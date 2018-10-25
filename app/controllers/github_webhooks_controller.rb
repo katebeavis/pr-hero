@@ -11,24 +11,27 @@ class GithubWebhooksController < ApplicationController
     merged_comments = octokit.merged_comments
     comment_stats = ComputeCommentStats.new(merged_comments)
     @recommended_reviewer = RecommendedReviewer.new(comment_stats)
-    convert_payload
+    state, options = convert_payload
+
+    @client.determine_hipchat_message(state, options)
   end
 
-  def show
-  end
+  private
 
   def convert_payload
-    @event = params[:github_webhook]
-    state = @event[:action]
-    options = { user: @event[:pull_request][:user][:login],
-                link: @event[:pull_request][:html_url],
-                user: @event[:pull_request][:user][:login],
-                username: @recommended_reviewer.hipchat_username,
-                merged_at: @event.dig(:pull_request, :merged_at),
-                merged_by: @event.dig(:pull_request, :merged_by, :login),
-                title: @event[:pull_request][:title]
-              }
-    @client.determine_hipchat_message(state, options)
+    event = params[:github_webhook]
+    state = event[:action]
+    options = { 
+      user: event[:pull_request][:user][:login],
+      link: event[:pull_request][:html_url],
+      user: event[:pull_request][:user][:login],
+      username: @recommended_reviewer.hipchat_username,
+      merged_at: event.dig(:pull_request, :merged_at),
+      merged_by: event.dig(:pull_request, :merged_by, :login),
+      title: event[:pull_request][:title]
+    }
+
+    [state, options]
   end
 
 end

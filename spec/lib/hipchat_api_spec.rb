@@ -13,9 +13,7 @@ RSpec.describe 'HipchatApi' do
 
   describe '#send_message' do
     it 'sends a message to a hipchat room' do
-      expect(hipchat).to receive(:send_message).and_return('Notifications', 'Wow!').once
-
-      hipchat.send_message('Notifications', 'Wow!')
+      expect(hipchat.send_message('Notifications', 'Wow!')).to eq(true)
     end
   end
 
